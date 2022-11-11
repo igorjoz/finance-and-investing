@@ -1,11 +1,19 @@
 @import '../variables';
 
 .link {
-    // color: $link-color;
-    color: #00ADB5;
+    color: $link-color;
 
     &:hover {
-        // color: $link-color-hover;
+        color: $link-color-hover;
+        color: $link-color-hover;
+    }
+
+    &--dafault-font-color {
+        color: $default-font-color;
+
+        &:hover {
+            color: $default-font-color-dark;
+        }
     }
 
     &--no-hover-underline {
@@ -15,10 +23,10 @@
     }
 
     &--default-font-color {
-        // color: $default-font-color;
+        color: $default-font-color;
 
         &:hover {
-            // color: $default-font-color;
+            color: $default-font-color;
         }
     }
 }
