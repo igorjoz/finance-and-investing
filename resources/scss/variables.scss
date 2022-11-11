@@ -1,10 +1,21 @@
 // * font
 $font-sans-serif: 'Poppins',
 sans-serif;
-$default-font-color: black;
 
-$link-color: orangered;
+$md: 1100px;
+$sm: 700px;
+
+$default-background-color: #222831;
+$secondary-background-color: #393E46;
+
+$default-font-color: white;
+$default-font-color-dark: darken(white, 5%);
+
+// $link-color: orangered;
+$link-color: #00ADB5;
+$secondary-color: #00ADB5;
+$secondary-color-dark: darken(#00ADB5, 10%);
 // $link-color: #F94892;
 
 
-$link-color-hover: red;
+$link-color-hover: darken(#00ADB5, 5%);
