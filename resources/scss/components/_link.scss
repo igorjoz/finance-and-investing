@@ -1,0 +1,24 @@
+@import '../variables';
+
+.link {
+    // color: $link-color;
+    color: #00ADB5;
+
+    &:hover {
+        // color: $link-color-hover;
+    }
+
+    &--no-hover-underline {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &--default-font-color {
+        // color: $default-font-color;
+
+        &:hover {
+            // color: $default-font-color;
+        }
+    }
+}

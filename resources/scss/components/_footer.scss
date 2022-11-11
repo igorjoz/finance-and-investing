@@ -1,0 +1,13 @@
+@import '../variables';
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    // background-color: greenyellow;
+    padding: 50px;
+
+    &__author {
+        font-weight: 600;
+    }
+}

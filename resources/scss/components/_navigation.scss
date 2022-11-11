@@ -1,0 +1,35 @@
+@import '../variables';
+
+.navigation {
+    // display: grid;
+    // grid-template-columns: "header navigation";
+    font-size: 2rem;
+    font-weight: 400;
+    // text-transform: uppercase;
+    // letter-spacing: 0.10rem;
+
+    &__header-element {
+        // background-color: greenyellow;
+        display: flex;
+        justify-content: center;
+        // color: black;
+    }
+
+    &__main-header {
+        font-size: 2rem;
+    }
+
+    &__list {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-evenly;
+        width: clamp(320px, 65%, 1000px);
+        // align-items: center;
+
+        // background-color: greenyellow;
+    }
+
+    &__list-element {
+        // margin: 0 1rem;
+    }
+}
