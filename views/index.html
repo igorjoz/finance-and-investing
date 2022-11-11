@@ -6,61 +6,195 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Project P.F.I. - Personal Finances & Investing</title>
+    <title>Project P.F.I - Personal Finances & Investing</title>
     <meta name="description" content="Personal website about my hobby - Personal Finances & Investing">
 
-    <link rel="stylesheet" href="../resources/css/index.css">
-    <link rel="stylesheet" href="../resources/css/page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="../resources/css/index.css">
+
+    <script src="../resources/js/app.js"></script>
+    <script src="../resources/js/timer.js"></script>
 </head>
 
-<body>
+<body class="page__preload">
     <!-- MAIN MENU, NAVIGATION -->
     <nav class="navigation">
         <header class="navigation__header-element">
             <h1 class="navigation__main-header">
-                <a href="index.html" class="link link--no-hover-underline link--default-font-color">Project P.F.I -
-                    Personal Finance & Investing </a>
+                <!-- <img src="../resources/images/investing-icon.svg" alt="Investing icon" class="navigation__logo"> -->
+                <a href="index.html" class="link link--no-hover-underline link--default-font-color"
+                    id="navigation__main-header-link">
+                    Project P.F.I
+                </a>
             </h1>
         </header>
 
-        <ul class="navigation__list">
-            <li class="navigation__list-element">
-                <a href="index.html" class="link">Home</a>
-            </li>
+        <div class="navigation__list-wrapper">
+            <ul class="navigation__list">
+                <li class="navigation__list-item navigation__list-item--active">
+                    <a href="index.html"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Home
+                    </a>
+                </li>
 
-            <li class="navigation__list-element">
-                <a href="personal-finances.html" class="link">Personal Finance</a>
-            </li>
+                <li class="navigation__list-item">
+                    <a href="investing.html"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Investing
+                    </a>
 
-            <li class="navigation__list-element">
-                <a href="investing.html" class="link">Investing</a>
-            </li>
+                    <ul class="navigation__dropdown-list">
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-portfolios"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Types of portfolios
+                            </a>
 
-            <li class="navigation__list-element">
-                <a href="contact.html" class="link">Contact</a>
-            </li>
-        </ul>
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-financial-instruments"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Types of financial instruments
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#set-of-basic-rules"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Set of basic rules
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#the-big-mistakes"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                The big mistakes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navigation__list-item">
+                    <a href="faq.html"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        FAQ
+                    </a>
+
+                    <ul class="navigation__dropdown-list">
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-portfolios"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                What's the best time to start investing?
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-financial-instruments"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Types of financial instruments
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#set-of-basic-rules"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                What should I invest $10'000 in?
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#the-big-mistakes"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                The big mistakes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navigation__list-item">
+                    <a href="contact.html"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <!-- END MAIN MENU, NAVIGATION -->
 
     <!-- MAIN -->
     <main class="page__main">
-        <h2>Main content</h2>
-        <p>Personal website about my hobby - Personal Finances & Investing</p>
-
-        <hr>
-
-        <h3>Personal Finances</h3>
         <article class="page__article">
-            <h3>Personal Finances</h3>
+            <section class="page__section">
+                <h2>
+                    Recommended websites in Polish
+                </h2>
+
+                <ul class=" home__recommendations-list">
+                    <li class="home__recommendation-list-item">
+                        <a href="https://jakoszczedzacpieniadze.pl/" class="link" target="_blank">
+                            Jak oszczędzać pieniądze - Michał Szafrański
+                        </a>
+                    </li>
+
+                    <li class="home__recommendation-list-item">
+                        <a href="https://marciniwuc.com/" class="link" target="_blank">
+                            Finanse Bardzo Osobiste - Marcin Iwuć
+                        </a>
+                    </li>
+                </ul>
+            </section>
 
             <section class="page__section">
-                some section here
+                <h2>
+                    Recommended literature in Polish
+                </h2>
+
+                <ul class="home__recommendations-list">
+                    <li class="home__recommendation-list-item">
+                        <a href="https://finansowyninja.pl/" class="link" target="_blank">
+                            Finansowy Ninja - Michał Szafrański
+                        </a>
+                    </li>
+
+                    <li class="home__recommendation-list-item">
+                        <a href="https://finansowaforteca.pl/" class="link" target="_blank">
+                            Finansowa Forteca - Marcin Iwuć
+                        </a>
+                    </li>
+                </ul>
             </section>
         </article>
     </main>
@@ -68,22 +202,51 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer__author">Author: Igor Józefowicz</div>
+        <ul class="footer__list">
+            <li class="footer__list-item">
+                Author: Igor Józefowicz
+            </li>
 
-        <div>
-            Email:
-            <a href="mailto:igor@jozefowicz.pl" target="_blank" class="link">igor@jozefowicz.pl</a>
-        </div>
+            <li class="footer__list-item">
+                Email:
+                <a href="mailto:igor@jozefowicz.pl" target="_blank" class="link">
+                    igor@jozefowicz.pl
+                </a>
+            </li>
 
-        <div>
-            Github:
-            <a href="https://github.com/igorjoz" target="_blank" class="link">@igorjoz</a>
-        </div>
+            <li class="footer__list-item">
+                Github:
+                <a href="https://github.com/igorjoz" target="_blank" class="link">@igorjoz
+                </a>
+            </li>
 
-        <div>
-            LinkedIn:
-            <a href="https://www.linkedin.com/in/igor-jozefowicz/" target="_blank" class="link">in/igor-jozefowicz</a>
-        </div>
+            <li class="footer__list-item">
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/igor-jozefowicz/" target="_blank" class="link">
+                    in/igor-jozefowicz
+                </a>
+            </li>
+        </ul>
+
+        <ul id="footer__time-spent-list" class="footer__list">
+            <li id="footer__time-spent-on-current-page-list-element"
+                class="footer__list-item footer__list-item--total-spent-time">
+                Time spent on this page:
+                <span id="footer__spent-time-on-current-page-value" class="footer__time-spent-span">00:00</span>
+            </li>
+
+            <!-- <li class="footer__list-item footer__list-item--total-spent-time">
+                Total time on the website:
+                <span id="footer__total-spent-time-value">00:00</span>
+            </li> -->
+
+            <li>
+                <button onclick="showTotalSpentTime()" id="footer__show-total-time-button"
+                    class="btn footer__show-total-spent-time-button">
+                    Show total time spent on this site
+                </button>
+            </li>
+        </ul>
     </footer>
     <!-- END FOOTER -->
 
