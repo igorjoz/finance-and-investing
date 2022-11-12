@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="../resources/css/index.css">
 
     <script src="../resources/js/app.js"></script>
+    <script src="../resources/js/timer.js"></script>
 </head>
 
 <body class="page__preload">
@@ -39,6 +40,7 @@
     <nav class="navigation">
         <header class="navigation__header-element">
             <h1 class="navigation__main-header">
+                <!-- <img src="../resources/images/investing-icon.svg" alt="Investing icon" class="navigation__logo"> -->
                 <a href="index.html" class="link link--no-hover-underline link--default-font-color"
                     id="navigation__main-header-link">
                     Project P.F.I
@@ -48,62 +50,102 @@
 
         <div class="navigation__list-wrapper">
             <ul class="navigation__list">
-                <li class="navigation__list-element">
+                <li class="navigation__list-item">
                     <a href="index.html"
-                        class="link link--default-font-color link--no-hover-underline navigation__list-element-link">
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Home
                     </a>
                 </li>
 
-                <!-- <li class="navigation__list-element">
-                    <a href="personal-finances.html"
-                        class="link link--default-font-color link--no-hover-underline navigation__list-element-link">
-                        Finance
-                    </a>
-                </li> -->
-
-                <li class="navigation__list-element">
+                <li class="navigation__list-item">
                     <a href="investing.html"
-                        class="link link--default-font-color link--no-hover-underline navigation__list-element-link">
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Investing
                     </a>
 
                     <ul class="navigation__dropdown-list">
                         <li class="navigation__dropdown-list-item">
-                            <a href="investing.html#portfolios-types"
+                            <a href="investing.html#types-of-portfolios"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 Types of portfolios
                             </a>
+
+                            <hr class="navigation__dropdown-hr">
                         </li>
 
-                        <hr>
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-financial-instruments"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Types of financial instruments
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="#" class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                            <a href="investing.html#set-of-basic-rules"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 Set of basic rules
                             </a>
+
+                            <hr class="navigation__dropdown-hr">
                         </li>
 
-                        <hr>
-
                         <li class="navigation__dropdown-list-item">
-                            <a href="#" class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                            <a href="investing.html#the-big-mistakes"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 The big mistakes
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="navigation__list-element">
+                <li class="navigation__list-item">
                     <a href="faq.html"
-                        class="link link--default-font-color link--no-hover-underline navigation__list-element-link">
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         FAQ
                     </a>
+
+                    <ul class="navigation__dropdown-list">
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-portfolios"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                What's the best time to start investing?
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#types-of-financial-instruments"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                Types of financial instruments
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#set-of-basic-rules"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                What should I invest $10'000 in?
+                            </a>
+
+                            <hr class="navigation__dropdown-hr">
+                        </li>
+
+                        <li class="navigation__dropdown-list-item">
+                            <a href="investing.html#the-big-mistakes"
+                                class="link link--no-hover-underline navigation__dropdown-list-item-link">
+                                The big mistakes
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="navigation__list-element">
+                <li class="navigation__list-item navigation__list-item--active">
                     <a href="contact.html"
-                        class="link link--default-font-color link--no-hover-underline navigation__list-element-link">
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Contact
                     </a>
                 </li>
@@ -118,14 +160,14 @@
             <h2 class="page__section-header">Send me a message!</h2>
 
             <section class="page__section">
-                <form action="send-contact-form.php" class="form">
+                <form action="send-contact-form.php" class="form" method="post">
                     <div class="form-group form__input-and-label-wrapper">
                         <label for="nameAndSurname">
                             Name and surname
                         </label>
 
                         <input type="nameAndSurname" class="form-control form__input" id="nameAndSurname"
-                            name="nameAndSurname">
+                            name="nameAndSurname" required>
                     </div>
 
                     <div class="form-group">
@@ -133,52 +175,45 @@
                             Email address
                         </label>
 
-                        <input type="email" class="form-control form__input" id="email" name="email">
+                        <input type="email" class="form-control form__input" id="email" name="email" required>
                     </div>
 
-                    <div class="form-group form__input-and-label-wrapper">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Default checkbox
+                    <div class="form-group">
+                        <label for="phone">
+                            Phone Number (optional)
                         </label>
+
+                        <input type="tel" class="form-control form__input" id="phone" name="phone">
+                    </div>
+
+                    <p class="form__radio-description">
+                        Preferred contact method
+                    </p>
+
+                    <div class="form__radio-options-wrapper">
+                        <div class="form-group form__input-and-label-wrapper">
+                            <input class="form-check-input" type="radio" name="contact_method" id="method_email"
+                                value="email" checked>
+
+                            <label class="form-check-label form__label form__label--radio" for="contact_method">
+                                Email
+                            </label>
+                        </div>
+
+                        <div class="form-group form__input-and-label-wrapper">
+                            <input class="form-check-input" type="radio" name="contact_method" id="method_phone"
+                                value="phone">
+
+                            <label class="form-check-label form__label form__label--radio" for="contact_method">
+                                Phone
+                            </label>
+                        </div>
                     </div>
 
                     <div class="form-group form__input-and-label-wrapper">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                        <label class="form-check-label" for="defaultCheck2">
-                            Disabled checkbox
-                        </label>
-                    </div>
-
-                    <div class="form-group form__input-and-label-wrapper">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Default radio
-                        </label>
-                    </div>
-
-                    <div class="form-group form__input-and-label-wrapper">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                            value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Second default radio
-                        </label>
-                    </div>
-
-                    <div class="form-group form__input-and-label-wrapper">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
-                            value="option3" disabled>
-                        <label class="form-check-label" for="exampleRadios3">
-                            Disabled radio
-                        </label>
-                    </div>
-
-                    <div class="form-group form__input-and-label-wrapper">
-                        <label class="form-check-label" for="inlineFormCustomSelect">Topic</label>
-                        <select class="custom-select form-check-label form__input" id="inlineFormCustomSelect">
-                            <option selected>Choose...</option>
-                            <option value="1">Personal Finance</option>
+                        <label class="form-check-label" for="inlineFormCustomSelect">Topic of the message</label>
+                        <select class="custom-select form-check-label form__input" id="inlineFormCustomSelect" required>
+                            <option value="1" selected>Personal Finance</option>
                             <option value="2">Investing</option>
                             <option value="3">Collaboration with me</option>
                             <option value="4">Regarding the website</option>
@@ -188,8 +223,22 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea class="form-control form__textarea" id="message" name="message" rows="8"></textarea>
+
+                        <textarea class="form-control form__textarea" id="message" name="message" rows="8"
+                            required></textarea>
                     </div>
+
+                    <div class="form-group form__input-and-label-wrapper form__input-and-label-wrapper--accept-rules">
+                        <input class="form-check-input" type="checkbox" value="" id="rulesAccept" name="rulesAccept">
+
+                        <label class="form-check-label form__label form__label--accept-rules" for="rulesAccept">
+                            I accept the terms and conditions
+                        </label>
+                    </div>
+
+                    <button type="reset" class="btn btn-secondary form__reset-button">
+                        Reset the form
+                    </button>
 
                     <button type="submit" class="btn btn-primary form__submit-button">
                         Send message
@@ -203,19 +252,43 @@
     <!-- FOOTER -->
     <footer class="footer">
         <ul class="footer__list">
-            <li class="footer__list-element">Author: Igor Józefowicz</li>
-
-            <li class="footer__list-element">Email:
-                <a href="mailto:igor@jozefowicz.pl" target="_blank" class="link">igor@jozefowicz.pl</a>
+            <li class="footer__list-item">
+                Author: Igor Józefowicz
             </li>
 
-            <li class="footer__list-element">Github:
-                <a href="https://github.com/igorjoz" target="_blank" class="link">@igorjoz</a>
+            <li class="footer__list-item">
+                Email:
+                <a href="mailto:igor@jozefowicz.pl" target="_blank" class="link">
+                    igor@jozefowicz.pl
+                </a>
             </li>
 
-            <li class="footer__list-element">LinkedIn:
-                <a href="https://www.linkedin.com/in/igor-jozefowicz/" target="_blank"
-                    class="link">in/igor-jozefowicz</a>
+            <li class="footer__list-item">
+                Github:
+                <a href="https://github.com/igorjoz" target="_blank" class="link">@igorjoz
+                </a>
+            </li>
+
+            <li class="footer__list-item">
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/igor-jozefowicz/" target="_blank" class="link">
+                    in/igor-jozefowicz
+                </a>
+            </li>
+        </ul>
+
+        <ul id="footer__time-spent-list" class="footer__list">
+            <li id="footer__time-spent-on-current-page-list-element"
+                class="footer__list-item footer__list-item--total-spent-time">
+                Time spent on this page:
+                <span id="footer__spent-time-on-current-page-value" class="footer__time-spent-span">00:00</span>
+            </li>
+
+            <li class="footer__list-item footer__list-item--total-spent-time">
+                <button onclick="showTotalSpentTime()" id="footer__show-total-time-button"
+                    class="btn footer__show-total-spent-time-button">
+                    Show total time spent on this site
+                </button>
             </li>
         </ul>
     </footer>
