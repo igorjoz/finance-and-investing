@@ -1,12 +1,26 @@
-let startDate: Date;
+let userOnWebsiteStartDate: Date;
+let userOnCurrentPageStartDate: Date;
 
-if ("startDate" in localStorage) {
-    startDate = new Date(localStorage.getItem("startDate")!);
+if ("lastPage" in sessionStorage && sessionStorage.getItem("lastPage") !== window.location.pathname) {
+    sessionStorage.setItem("userOnCurrentPageStartDate", new Date().toString());
+}
+sessionStorage.setItem("lastPage", window.location.pathname);
+
+if ("userOnWebsiteStartDate" in localStorage) {
+    userOnWebsiteStartDate = new Date(localStorage.getItem("userOnWebsiteStartDate")!);
 } else {
-    startDate = new Date();
+    userOnWebsiteStartDate = new Date();
+    localStorage.setItem("userOnWebsiteStartDate", userOnWebsiteStartDate.toString());
 }
 
-function calculateSpentTime(): number {
+if ("userOnCurrentPageStartDate" in sessionStorage) {
+    userOnCurrentPageStartDate = new Date(sessionStorage.getItem("userOnCurrentPageStartDate")!);
+} else {
+    userOnCurrentPageStartDate = new Date();
+    sessionStorage.setItem("userOnCurrentPageStartDate", userOnCurrentPageStartDate.toString());
+}
+
+function calculateSpentTime(startDate: Date): number {
     const currentTime = new Date().getTime();
     const spentTime = currentTime - startDate.getTime();
 
@@ -14,40 +28,36 @@ function calculateSpentTime(): number {
 };
 
 function convertMillisecondsToTime(milliseconds: number): string {
-    const hours = Math.floor(milliseconds / 6_000_000);
-    const minutes = Math.floor(milliseconds % 6_000_000 / 60_000);
-    const seconds = Number(((milliseconds % 60_000) / 1_000).toFixed(0));
+    let secondsLeft = Math.floor(milliseconds / 1000);
 
-    let spentTimeValue = "";
+    const hours = Math.floor(secondsLeft / 3600);
+    secondsLeft %= 3600;
+    const minutes = Math.floor(secondsLeft / 60);
+    secondsLeft %= 60;
+    const seconds = secondsLeft;
+
+    let spentTimeString = "";
 
     if (hours > 0 && hours < 10) {
-        spentTimeValue += "0" + hours + ":";
+        spentTimeString += "0" + hours + ":";
     } else if (hours >= 10) {
-        spentTimeValue += hours + ":";
+        spentTimeString += hours + ":";
     }
 
-    if (minutes < 10) {
-        spentTimeValue += "0";
-    }
-    spentTimeValue += minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    spentTimeString += (minutes < 10 ? "0" : "") + minutes + ":";
+    spentTimeString += (seconds < 10 ? "0" : "") + seconds;
 
-    return spentTimeValue;
+    return spentTimeString;
 }
 
 function setSpentTimeValue(): void {
     const timeSpentElement = document.getElementById('footer__total-spent-time-value')! as HTMLSpanElement;
 
-    const spentTime = calculateSpentTime();
-
-    localStorage.setItem("startDate", startDate.toString());
+    const spentTime = calculateSpentTime(userOnWebsiteStartDate);
 
     const spentTimeValue = convertMillisecondsToTime(spentTime);
 
     timeSpentElement.innerText = spentTimeValue;
-}
-
-function startRefreshingSpentTime(): void {
-    window.setInterval(setSpentTimeValue, 1000);
 }
 
 function showTotalSpentTime(): void {
@@ -58,11 +68,13 @@ function showTotalSpentTime(): void {
     const totalTimeSpentListItem = document.createElement('li');
     totalTimeSpentListItem.id = 'footer__total-spent-time-list-item';
     totalTimeSpentListItem.innerText = 'Total time spent on the website: ';
+    totalTimeSpentListItem.classList.add('footer__list-item', 'footer__list-item--total-spent-time');
+    totalTimeSpentListItem.classList.remove('footer__list-item--button-inside');
 
     const totalTimeSpentSpan = document.createElement('span');
     totalTimeSpentSpan.id = 'footer__total-spent-time-value';
     totalTimeSpentSpan.classList.add('footer__time-spent-span');
-    totalTimeSpentSpan.innerText = convertMillisecondsToTime(calculateSpentTime());
+    totalTimeSpentSpan.innerText = convertMillisecondsToTime(calculateSpentTime(userOnWebsiteStartDate));
 
     totalTimeSpentListItem.appendChild(totalTimeSpentSpan);
 
@@ -70,25 +82,19 @@ function showTotalSpentTime(): void {
 
     timeSpentList.appendChild(totalTimeSpentListItem);
 
-    startRefreshingSpentTime();
+    window.setInterval(setSpentTimeValue, 1000);
 }
 
-// function setSpentTimeOnCurrentPageValue(): void {
-//     const timeSpentOnCurrentPageElement = document.getElementById('footer__spent-time-on-current-page-value')! as HTMLSpanElement;
+function setSpentTimeOnCurrentPageValue(): void {
+    const timeSpentOnCurrentPageElement = document.getElementById('footer__spent-time-on-current-page-value')! as HTMLSpanElement;
 
-//     const spentTime = calculateSpentTime();
+    const spentTime = calculateSpentTime(userOnCurrentPageStartDate);
+    const spentTimeValue = convertMillisecondsToTime(spentTime);
 
-//     // localStorage.setItem("currentPageStartDate", startDate.toString());
-//     let currentPageStartDate: Date;
-//     if ("currentPageStartDate" in sessionStorage) {
-//         currentPageStartDate = new Date(sessionStorage.getItem("currentPageStartDate")!);
-//     } else {
-//         currentPageStartDate = new Date();
-//     }
+    timeSpentOnCurrentPageElement.innerText = spentTimeValue;
+}
 
-//     const spentTimeValue = convertMillisecondsToTime(spentTime);
+window.addEventListener('load', () => {
+    window.setInterval(setSpentTimeOnCurrentPageValue, 1000);
+});
 
-//     timeSpentOnCurrentPageElement.innerText = spentTimeValue;
-// }
-
-// window.addEventListener('load', startCountingSpentTime);
