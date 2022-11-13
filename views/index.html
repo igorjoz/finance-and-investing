@@ -11,15 +11,16 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="../resources/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="../resources/js/magnific-popup/magnific-popup.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,29 +190,49 @@
                 </h1>
             </header>
 
-            <section class="page__section">
+            <section class="page__section page__section--center">
                 <div class="slider__wrapper">
                     <img src="../resources/images/slider/previous.png" class="slider__previous-icon"
                         alt="Previous slide icon">
 
                     <div class="slider__images-container">
-                        <img src="../resources/images/inflation-over-time.png"
-                            class="slider__image slider__image--active"
-                            alt="Image showing impact of inflation over 20 years">
+                        <img src="../resources/images/slider/1.webp" class="slider__image slider__image--active"
+                            alt="Investing slide">
 
-                        <img src="../resources/images/inflation-over-time.png" class="slider__image"
-                            alt="Image showing impact of inflation over 20 years">
+                        <img src="../resources/images/slider/2.png" class="slider__image"
+                            alt="FAQ (Frequently Asked Questions) slide">
 
-                        <img src="../resources/images/inflation-over-time.png" class="slider__image"
-                            alt="Image showing impact of inflation over 20 years">
+                        <img src="../resources/images/slider/3.jpg" class="slider__image"
+                            alt="ETF (Exchange-traded funds) slide">
+
+                        <img src="../resources/images/slider/4.avif" class="slider__image" alt="Inflation slide">
+
+                        <img src="../resources/images/slider/5.jpg" class="slider__image" alt="Gold slide">
                     </div>
 
                     <img src="../resources/images/slider/next.png" class="slider__next-icon" alt="Next slide icon">
                 </div>
+
+                <noscript>
+                    <img src="../resources/images/slider/1.webp" class="slider__image slider__image--active"
+                        alt="Investing slide">
+
+                    <img src="../resources/images/slider/2.png" class="slider__image"
+                        alt="FAQ (Frequently Asked Questions) slide">
+
+                    <img src="../resources/images/slider/3.jpg" class="slider__image slider__image--active"
+                        alt="ETF (Exchange-traded funds) slide">
+
+                    <img src="../resources/images/slider/4.avif" class="slider__image slider__image--active"
+                        alt="Inflation slide">
+
+                    <img src="../resources/images/slider/5.jpg" class="slider__image slider__image--active"
+                        alt="Gold slide">
+                </noscript>
             </section>
 
-            <section class="page__section">
-                <h2>
+            <section class="page__section page__section--center">
+                <h2 class="page__section-header">
                     Recommended websites in Polish
                 </h2>
 
@@ -230,8 +251,8 @@
                 </ul>
             </section>
 
-            <section class="page__section">
-                <h2>
+            <section class="page__section page__section--center">
+                <h2 class="page__section-header">
                     Recommended literature in Polish
                 </h2>
 
@@ -281,6 +302,10 @@
             </li>
         </ul>
 
+        <noscript class="page__section page__section--center">
+            Please enable JavaScript to ensure proper operation of the website.
+        </noscript>
+
         <ul id="footer__time-spent-list" class="footer__list">
             <li id="footer__time-spent-on-current-page-list-element"
                 class="footer__list-item footer__list-item--total-spent-time">
@@ -291,7 +316,7 @@
             <li class="footer__list-item footer__list-item--total-spent-time footer__list-item--button-inside">
                 <button onclick="showTotalSpentTime()" id="footer__show-total-time-button"
                     class="btn footer__show-total-spent-time-button">
-                    Show total time spent on this site
+                    Show time since first visit to the site
                 </button>
             </li>
         </ul>
