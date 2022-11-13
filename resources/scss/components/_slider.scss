@@ -1,23 +1,30 @@
+@import '../variables';
+
 .slider {
     &__wrapper {
-        // width: 100%;
-        width: 500px;
-        height: 300px;
+        width: $slider-width;
+        max-width: 100%;
+        height: 500px;
         position: relative;
+        cursor: zoom-in;
     }
 
     &__images-container {
-        width: 500px;
-        height: 300px;
+        width: $slider-width;
+        max-width: 100%;
+        // height: 500px;
+        height: 100%;
         position: relative;
         overflow: hidden;
-        border: 2px solid #ccc;
+        border: 1px solid $whiteColor;
     }
 
     &__image {
         display: none;
-        width: 500px;
-        height: 300px;
+        width: $slider-width;
+        max-width: 100%;
+        // height: 500px;
+        height: 100%;
 
         &--active {
             display: block;
@@ -29,6 +36,8 @@
         cursor: pointer;
         width: 50px;
         z-index: 3;
+        border: 1px solid $whiteColor;
+        border-radius: 50%;
     }
 
     &__previous-icon {
@@ -36,6 +45,7 @@
         top: 50%;
         transform: translateY(-50%);
         left: 0;
+        margin-left: 10px;
     }
 
     &__next-icon {
@@ -43,5 +53,6 @@
         top: 50%;
         transform: translateY(-50%);
         right: 0;
+        margin-right: 10px;
     }
 }
