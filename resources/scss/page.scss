@@ -48,20 +48,47 @@ hr {
     &__article {
         display: block;
         background-color: $default-background-color;
-        margin: 0 30%;
+        margin: 0 25%;
+
+        @media (max-width: $md) {
+            margin: 0 15%;
+        }
+
+        @media (max-width: $sm) {
+            margin: 0 5%;
+        }
+    }
+
+    &__article-header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__article-header-text {
+        font-size: 3.6rem;
     }
 
     &__section-header {
         font-size: 3rem;
-        text-align: center;
-        padding-bottom: 20px;
     }
 
     &__section {
         min-width: 100%;
-        display: flex;
         display: block;
-
         justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    &__bold-text {
+        font-weight: 600;
+    }
+
+    &__image-wrapper {
+        width: 100%;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
     }
 }
