@@ -1,0 +1,47 @@
+.slider {
+    &__wrapper {
+        // width: 100%;
+        width: 500px;
+        height: 300px;
+        position: relative;
+    }
+
+    &__images-container {
+        width: 500px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid #ccc;
+    }
+
+    &__image {
+        display: none;
+        width: 500px;
+        height: 300px;
+
+        &--active {
+            display: block;
+        }
+    }
+
+    &__previous-icon,
+    &__next-icon {
+        cursor: pointer;
+        width: 50px;
+        z-index: 3;
+    }
+
+    &__previous-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+    }
+
+    &__next-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+    }
+}

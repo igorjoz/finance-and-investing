@@ -4,6 +4,10 @@
     width: clamp(320px, 400px, 800px);
     margin: 0 auto;
 
+    @media (max-width: $sm) {
+        width: 100%;
+    }
+
     &__input {
         display: block;
         width: 100%;

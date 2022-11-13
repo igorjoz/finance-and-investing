@@ -8,25 +8,43 @@
         font-size: 2.2rem;
     }
 
+    @media (max-width: $xs) {
+        font-size: 2rem;
+    }
+
     &__header-element {
         display: flex;
-        justify-content: center;
-        padding: 10px 0;
+        // justify-content: center;
+        padding: 5px 0;
     }
 
     &__main-header {
         font-size: 4.4rem;
         color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
 
         @media (max-width: $sm) {
             font-size: 3.4rem;
         }
     }
 
+    &__main-header-link {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
     &__logo {
-        width: 100px;
-        height: 100px;
-        margin: 0 20px;
+        max-height: 65px;
+        width: auto;
+        margin: 0 15px 0 0;
+
+        @media (max-width: $sm) {
+            max-height: 50px;
+        }
     }
 
     &__list-wrapper {
@@ -49,7 +67,11 @@
         transition: 0.15s;
 
         @media (max-width: $sm) {
-            padding: 12px 8px;
+            padding: 15px 8px;
+        }
+
+        @media (max-width: $xs) {
+            padding: 15px 5px;
         }
 
         &:hover {
