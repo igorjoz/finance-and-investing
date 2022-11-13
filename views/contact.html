@@ -170,8 +170,8 @@
                             Name and surname
                         </label>
 
-                        <input type="nameAndSurname" class="form-control form__input" id="nameAndSurname"
-                            name="nameAndSurname" required>
+                        <input type="text" class="form-control form__input" id="nameAndSurname" name="nameAndSurname"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -199,7 +199,7 @@
                             <input class="form-check-input" type="radio" name="contact_method" id="method_email"
                                 value="email" checked>
 
-                            <label class="form-check-label form__label form__label--radio" for="contact_method">
+                            <label class="form-check-label form__label form__label--radio" for="method_email">
                                 Email
                             </label>
                         </div>
@@ -208,7 +208,7 @@
                             <input class="form-check-input" type="radio" name="contact_method" id="method_phone"
                                 value="phone">
 
-                            <label class="form-check-label form__label form__label--radio" for="contact_method">
+                            <label class="form-check-label form__label form__label--radio" for="method_phone">
                                 Phone
                             </label>
                         </div>
@@ -217,7 +217,8 @@
                     <div class="form-group form__input-and-label-wrapper">
                         <label class="form-check-label" for="inlineFormCustomSelect">Topic of the message</label>
                         <select class="custom-select form-check-label form__input" id="inlineFormCustomSelect" required>
-                            <option value="1" selected>Personal Finance</option>
+                            <option value="" selected>Choose...</option>
+                            <option value="1">Personal Finance</option>
                             <option value="2">Investing</option>
                             <option value="3">Collaboration with me</option>
                             <option value="4">Regarding the website</option>
@@ -226,7 +227,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Message</label>
+                        <label for="message">Message</label>
 
                         <textarea class="form-control form__textarea" id="message" name="message" rows="8"
                             required></textarea>
