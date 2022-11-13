@@ -1,4 +1,4 @@
 /node_modules
 
-/resources/css
-/resources/js
+# /resources/css
+# /resources/js
