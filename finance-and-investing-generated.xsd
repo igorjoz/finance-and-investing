@@ -1,0 +1,139 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="images">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="image" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="url"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="recommendations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="websites">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="website" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="link"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="language" use="optional"/>
+                        <xs:attribute type="xs:string" name="author" use="optional"/>
+                        <xs:attribute type="xs:string" name="isActive" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="books">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="book" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="link"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="language" use="optional"/>
+                        <xs:attribute type="xs:string" name="author" use="optional"/>
+                        <xs:attribute type="xs:string" name="isAvailable" use="optional"/>
+                        <xs:attribute type="xs:short" name="releaseYear" use="optional"/>
+                        <xs:attribute type="xs:string" name="isEbookAvailable" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="podcasts">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="podcast" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="link"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="language" use="optional"/>
+                        <xs:attribute type="xs:string" name="author" use="optional"/>
+                        <xs:attribute type="xs:string" name="isActive" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="typesOfAssets">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="type" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="subtypes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="subtype" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="invesrtingRules">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="rule" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="questions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="question" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element type="xs:string" name="answer"/>
+                    <xs:element type="xs:string" name="note" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="inflationTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="record" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="year"/>
+                    <xs:element type="xs:string" name="price"/>
+                    <xs:element type="xs:string" name="inflationRate"/>
+                    <xs:element type="xs:string" name="cumulativeInflation"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
