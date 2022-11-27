@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+    <xs:element name="data" type="dataType"/>
+
+    <xs:complexType name="dataType">
+        <xs:sequence>
+            <xs:element type="imagesType" name="images"/>
+            <xs:element type="recommendationsType" name="recommendations"/>
+            <xs:element type="typesOfAssetsType" name="typesOfAssets"/>
+            <xs:element type="investingRulesType" name="investingRules"/>
+            <xs:element type="questionsType" name="questions"/>
+            <xs:element type="inflationTableType" name="inflationTable"/>
+            <xs:element name="author" type="authorType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="imagesType">
+        <xs:sequence>
+            <xs:element type="imageType" name="image" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="imageType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="url"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="recommendationsType">
+        <xs:sequence>
+            <xs:element type="websitesType" name="websites"/>
+            <xs:element type="booksType" name="books"/>
+            <xs:element type="podcastsType" name="podcasts"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="websitesType">
+        <xs:sequence>
+            <xs:element type="websiteType" name="website" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="websiteType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="link"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="language" use="optional"/>
+        <xs:attribute type="xs:string" name="author" use="optional"/>
+        <xs:attribute type="xs:string" name="isActive" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="booksType">
+        <xs:sequence>
+            <xs:element type="bookType" name="book" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="link"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="language" use="optional"/>
+        <xs:attribute type="xs:string" name="author" use="optional"/>
+        <xs:attribute type="xs:string" name="isAvailable" use="optional"/>
+        <xs:attribute type="xs:short" name="releaseYear" use="optional"/>
+        <xs:attribute type="xs:string" name="isEbookAvailable" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="podcastsType">
+        <xs:sequence>
+            <xs:element type="podcastType" name="podcast" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="podcastType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="link"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="language" use="optional"/>
+        <xs:attribute type="xs:string" name="author" use="optional"/>
+        <xs:attribute type="xs:string" name="isActive" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="typesOfAssetsType">
+        <xs:sequence>
+            <xs:element type="typeOfAssetType" name="type" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="typeOfAssetType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="subtypesType" name="subtypes"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="subtypesType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="subtype" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="investingRulesType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="rule" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="questionsType">
+        <xs:sequence>
+            <xs:element type="questionType" name="question" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="questionType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="xs:string" name="answer"/>
+      <xs:element type="xs:string" name="note" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+    <xs:complexType name="inflationTableType">
+        <xs:sequence>
+            <xs:element type="recordType" name="record" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="recordType">
+        <xs:sequence>
+            <xs:element type="xs:byte" name="year"/>
+            <xs:element type="xs:string" name="price"/>
+            <xs:element type="xs:string" name="inflationRate"/>
+            <xs:element type="xs:string" name="cumulativeInflation"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="authorType">
+        <xs:sequence>
+            <xs:element name="fisrtName" type="shortStringType" />
+            <xs:element name="lastName" type="shortStringType" />
+            <!-- <xs:element type="firstName" name="firstName" maxOccurs="1" minOccurs="0"/> -->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="shortStringType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="30"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="longStringType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="70"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+    <xs:simpleType name="alive">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="yes"></xs:enumeration>
+			<xs:enumeration value="no"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+    <!-- <xs:attribute name="alive" type="alive" use="required"></xs:attribute> -->
+
+</xs:schema>
