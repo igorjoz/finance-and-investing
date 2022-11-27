@@ -48,14 +48,14 @@ hr {
     &__article {
         display: block;
         background-color: $default-background-color;
-        margin: 0 25%;
+        margin: 0 25vw;
 
         @media (max-width: $md) {
-            margin: 0 15%;
+            margin: 0 15vw;
         }
 
         @media (max-width: $sm) {
-            margin: 0 5%;
+            margin: 0 5vw;
         }
     }
 

@@ -44,16 +44,16 @@ hr {
 .page__article {
   display: block;
   background-color: #222831;
-  margin: 0 25%;
+  margin: 0 25vw;
 }
 @media (max-width: 1100px) {
   .page__article {
-    margin: 0 15%;
+    margin: 0 15vw;
   }
 }
 @media (max-width: 700px) {
   .page__article {
-    margin: 0 5%;
+    margin: 0 5vw;
   }
 }
 .page__article-header {

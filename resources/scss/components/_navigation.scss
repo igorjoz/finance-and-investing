@@ -1,5 +1,31 @@
 @import '../variables';
 
+// @keyframes slidein {
+//     from {
+//         padding-left: 70px;
+//         // transform: translateX(30%);
+//     }
+
+//     to {
+//         // transform: translateX(0%);
+//         padding-left: 0px;
+//     }
+// }
+
+@keyframes rotate {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    60% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
 .navigation {
     font-size: 3rem;
     font-weight: 400;
@@ -41,6 +67,10 @@
         max-height: 65px;
         width: auto;
         margin: 0 15px 0 0;
+
+        &:hover {
+            animation: rotate .7s linear;
+        }
 
         @media (max-width: $sm) {
             max-height: 50px;
