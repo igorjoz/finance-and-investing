@@ -1,0 +1,136 @@
+@import '../variables';
+
+.navigation {
+    font-size: 3rem;
+    font-weight: 400;
+
+    @media (max-width: $sm) {
+        font-size: 2.2rem;
+    }
+
+    @media (max-width: $xs) {
+        font-size: 2rem;
+    }
+
+    &__header-element {
+        display: flex;
+        // justify-content: center;
+        padding: 5px 0;
+    }
+
+    &__main-header {
+        font-size: 4.4rem;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+
+        @media (max-width: $sm) {
+            font-size: 3.4rem;
+        }
+    }
+
+    &__main-header-link {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    &__logo {
+        max-height: 65px;
+        width: auto;
+        margin: 0 15px 0 0;
+
+        @media (max-width: $sm) {
+            max-height: 50px;
+        }
+    }
+
+    &__list-wrapper {
+        display: flex;
+        justify-content: center;
+        background-color: $secondary-color;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-evenly;
+        width: clamp(320px, 65%, 900px);
+        margin: 0;
+    }
+
+    &__list-item {
+        position: relative;
+        background-color: $secondary-color;
+        padding: 10px 20px;
+        transition: 0.15s;
+
+        @media (max-width: $sm) {
+            padding: 15px 8px;
+        }
+
+        @media (max-width: $xs) {
+            padding: 15px 5px;
+        }
+
+        &:hover {
+            background-color: $secondary-color-dark;
+        }
+
+        &:active {
+            background-color: $secondary-color-dark;
+        }
+
+        &--active {
+            background-color: $secondary-color-dark;
+        }
+    }
+
+    &__dropdown-list {
+        display: none;
+        position: absolute;
+        background-color: $secondary-color-dark;
+        background-color: #EEEEEE;
+        color: black;
+        top: 100%;
+        left: 0;
+        width: clamp(320px, 400px, 500px);
+        z-index: 1;
+        padding: 0;
+    }
+
+    &__dropdown-list-item {
+        color: black;
+        padding: 5px 15px;
+        transition: 0.15s;
+        line-height: 1;
+
+        &:hover {
+            background-color: $secondary-background-color;
+
+            & .navigation__dropdown-list-item-link {
+                color: white !important;
+            }
+        }
+    }
+
+    &__dropdown-list-item-link {
+        font-size: 2.2rem;
+        color: black !important;
+        display: block;
+        padding: 8px 0;
+    }
+}
+
+.navigation__list-item:hover .navigation__dropdown-list {
+    display: block;
+}
+
+#navigation__main-header-link {
+    @media (min-width: 1100px) {
+        &::after {
+            content: " - Personal Finance & Investing";
+        }
+    }
+}

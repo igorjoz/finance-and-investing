@@ -1,0 +1,23 @@
+// * font
+$font-sans-serif: 'Poppins',
+sans-serif;
+
+$md: 1100px;
+$sm: 700px;
+$xs: 500px;
+
+$default-background-color: #222831;
+$secondary-background-color: #393E46;
+
+$default-font-color: white;
+$default-font-color-dark: darken(white, 5%);
+
+$secondary-color: #00ADB5;
+$secondary-color-dark: darken($secondary-color, 10%);
+
+$link-color: $secondary-color;
+$link-color-hover: darken($link-color, 5%);
+
+$whiteColor: #EEEEEE;
+
+$slider-width: 800px;

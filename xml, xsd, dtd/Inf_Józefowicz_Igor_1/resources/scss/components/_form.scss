@@ -1,0 +1,94 @@
+@import '../variables';
+
+.form {
+    width: clamp(320px, 400px, 800px);
+    margin: 0 auto;
+
+    @media (max-width: $sm) {
+        width: 100%;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 8px 12px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        font-size: 1.9rem;
+
+        border: 3px solid $default-background-color;
+
+        &:focus {
+            outline: none;
+            border-color: $secondary-color;
+        }
+    }
+
+    &__input-and-label-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        width: 100%;
+
+        &--accept-rules {
+            margin-left: 15px;
+        }
+    }
+
+    &__label {
+        &--radio {
+            padding-left: 10px;
+        }
+
+        &--accept-rules {
+            padding-left: 10px;
+        }
+    }
+
+    &__radio-description {
+        margin-bottom: 0;
+    }
+
+    &__radio-options-wrapper {
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+
+    &__reset-button {
+        font-size: 1.5rem;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: 0.15s;
+        width: 100%;
+        margin-top: 20px;
+
+        &:hover {
+            background-color: $secondary-background-color;
+        }
+    }
+
+    &__submit-button {
+        font-size: 1.9rem;
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondary-color-dark;
+        }
+    }
+
+    &__textarea {
+        font-size: 1.7rem !important;
+        padding: 10px;
+    }
+}

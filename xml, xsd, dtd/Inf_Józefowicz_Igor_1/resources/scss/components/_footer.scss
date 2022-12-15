@@ -1,0 +1,63 @@
+@import '../variables';
+
+.footer {
+    padding: 30px 20px;
+    background-color: $secondary-color;
+    background-color: $secondary-background-color;
+    margin-top: 20px;
+    font-size: 2.1rem;
+
+    &__list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+
+        @media (max-width: $md) {
+            flex-direction: column;
+        }
+
+        &:first-child {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__list-item {
+        padding: 8px 15px;
+
+        &--button-inside {
+            padding: 0;
+        }
+    }
+
+    &__show-total-spent-time-button {
+        font-size: 2.1rem;
+        white-space: normal;
+
+        background-color: $secondary-color;
+        color: white;
+        padding: 7px 15px;
+        border-radius: 5px;
+        transition: 0.15s;
+
+        @media (max-width: $sm) {
+            font-size: 2rem;
+            padding: 6px 12px;
+        }
+
+        &:hover {
+            background-color: $secondary-color-dark;
+        }
+    }
+
+    &__time-spent-span {
+        font-weight: 600;
+    }
+}
+
+#footer {
+    &__total-spent-time-value {
+        display: inline-block;
+        min-width: 80px;
+    }
+}

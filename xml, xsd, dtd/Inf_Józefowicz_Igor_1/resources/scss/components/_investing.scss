@@ -1,0 +1,23 @@
+.investing {
+    &__list {
+        padding-left: 20px;
+    }
+
+    &__list-item {
+        list-style-type: disc;
+        font-size: 1.8rem;
+
+        &--bigger-text {
+            font-size: 2rem;
+        }
+    }
+
+    &__nested-list {
+        padding-left: 20px;
+    }
+
+    &__nested-list-item {
+        list-style-type: circle;
+        font-size: 1.8rem;
+    }
+}
