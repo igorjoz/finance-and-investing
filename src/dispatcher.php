@@ -1,14 +1,46 @@
 <?php
 
-const REDIRECT_PREFIX = 'redirect:';
-function dispatch($routing, $action_url)
-{
-    $controller_name = $routing[$action_url];
-    $model = [];
-    $view_name = $controller_name($model);
 
-    build_response($view_name, $model);
+// require_once '/controllerscontrollers/controller.php';
+// require_once '/controllers/controller.php';
+require_once 'controllers/controller.php';
+// require_once 'routing.php';
+require_once 'controllers/HomeController.php';
+
+
+const REDIRECT_PREFIX = 'redirect:';
+
+
+function dispatch($routing, $actionUrl)
+{
+    $controllerName = $routing[$actionUrl] ?? 'default';
+    $model = [];
+    $viewName = $controllerName($model);
+    // $viewName = 'home/index';
+
+    build_response($viewName, $model);
 }
+
+function home_index(&$model)
+{
+    return 'home_index';
+}
+
+function home_investing(&$model)
+{
+    return 'home_investing';
+}
+
+function home_faq(&$model)
+{
+    return 'home_faq';
+}
+
+function home_contact(&$model)
+{
+    return 'home_contact';
+}
+
 function build_response($view, $model)
 {
     if (strpos($view, REDIRECT_PREFIX) === 0) {
@@ -21,9 +53,9 @@ function build_response($view, $model)
         render($view, $model);
     }
 }
-function render($view_name, $model)
+function render($viewName, $model)
 {
     extract($model);
 
-    include 'views/' . $view_name . '.php';
+    include 'views/' . $viewName . '.php';
 }
