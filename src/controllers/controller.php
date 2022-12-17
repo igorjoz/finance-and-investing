@@ -34,7 +34,7 @@ function edit(&$model)
     return 'edit_view';
 }
 
-function home_index(&$model)
-{
-    return 'home_view';
-}
+// function home_index(&$model)
+// {
+//     return 'home_view';
+// }

@@ -19,6 +19,8 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="./resources/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="./resources/js/magnific-popup/magnific-popup.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +31,7 @@
 
     <script src="./resources/js/app.js"></script>
     <script src="./resources/js/timer.js"></script>
+    <script src="./resources/js/slider.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="./resources/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./resources/images/favicon/favicon-32x32.png">
@@ -91,7 +94,7 @@
 
         <div class="navigation__list-wrapper">
             <ul class="navigation__list">
-                <li class="navigation__list-item">
+                <li class="navigation__list-item navigation__list-item--active">
                     <a href="/"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Home
@@ -99,7 +102,7 @@
                 </li>
 
                 <li class="navigation__list-item">
-                    <a href="investing"
+                    <a href="/home/investing"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Investing
                     </a>
@@ -133,14 +136,14 @@
                 </li>
 
                 <li class="navigation__list-item">
-                    <a href="faq"
+                    <a href="/home/faq"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         FAQ
                     </a>
 
                     <ul class="navigation__dropdown-list">
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#whats-the-best-time-to-start-investing"
+                            <a href="/home/faq#whats-the-best-time-to-start-investing"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What's the best time to start investing?
                             </a>
@@ -149,7 +152,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#what-is-inflation-and-how-does-it-work"
+                            <a href="/home/faq#what-is-inflation-and-how-does-it-work"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What is inflation and how does it work?
                             </a>
@@ -158,7 +161,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#what-should-i-invest-$10000-in"
+                            <a href="/home/faq#what-should-i-invest-$10000-in"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What should I invest $10'000 in?
                             </a>
@@ -166,8 +169,8 @@
                     </ul>
                 </li>
 
-                <li class="navigation__list-item navigation__list-item--active">
-                    <a href="contact"
+                <li class="navigation__list-item">
+                    <a href="/home/contact"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Contact
                     </a>
@@ -182,99 +185,94 @@
         <article class="page__article">
             <header class="page__article-header">
                 <h1 class="page__article-header-text">
-                    Send me a message!
+                    Homepage
                 </h1>
             </header>
 
-            <section class="page__section">
-                <form action="send-contact-form.php" class="form" method="post">
-                    <div class="form-group form__input-and-label-wrapper">
-                        <label for="nameAndSurname">
-                            Name and surname
-                        </label>
+            <section class="page__section page__section--center">
+                <div class="slider__wrapper">
+                    <img src="../../web/images/slider/previous.png" class="slider__previous-icon"
+                        alt="Previous slide icon">
 
-                        <input type="text" class="form-control form__input" id="nameAndSurname" name="nameAndSurname"
-                            required>
+                    <div class="slider__images-container">
+                        <!-- <img src="./resources/images/slider/1.webp" class="slider__image slider__image--active"
+                            alt="Investing slide"> -->
+
+                        <img src="../../web/images/slider/1.webp" class="slider__image slider__image--active"
+                            alt="Investing slide">
+
+                        <!-- ../../web/images/slider/previous.png -->
+
+                        <img src="./resources/images/slider/2.png" class="slider__image"
+                            alt="FAQ (Frequently Asked Questions) slide">
+
+                        <img src="./resources/images/slider/3.jpg" class="slider__image"
+                            alt="ETF (Exchange-traded funds) slide">
+
+                        <img src="./resources/images/slider/4.avif" class="slider__image" alt="Inflation slide">
+
+                        <img src="./resources/images/slider/5.jpg" class="slider__image" alt="Gold slide">
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">
-                            Email address
-                        </label>
+                    <img src="./resources/images/slider/next.png" class="slider__next-icon" alt="Next slide icon">
+                </div>
 
-                        <input type="email" class="form-control form__input" id="email" name="email" required>
-                    </div>
+                <noscript>
+                    <img src="./resources/images/slider/1.webp" class="slider__image slider__image--active"
+                        alt="Investing slide">
 
-                    <div class="form-group">
-                        <label for="phone">
-                            <a href="#" class="page__tooltip"
-                                title="If your preferred contact method is phone, please provide us your phone number">
-                                Phone number (optional)
-                            </a>
-                        </label>
+                    <img src="./resources/images/slider/2.png" class="slider__image"
+                        alt="FAQ (Frequently Asked Questions) slide">
 
-                        <input type="tel" class="form-control form__input" id="phone" name="phone">
-                    </div>
+                    <img src="./resources/images/slider/3.jpg" class="slider__image slider__image--active"
+                        alt="ETF (Exchange-traded funds) slide">
 
-                    <p class="form__radio-description">
-                        Preferred contact method
-                    </p>
+                    <img src="./resources/images/slider/4.avif" class="slider__image slider__image--active"
+                        alt="Inflation slide">
 
-                    <div class="form__radio-options-wrapper">
-                        <div class="form-group form__input-and-label-wrapper">
-                            <input class="form-check-input" type="radio" name="contact_method" id="method_email"
-                                value="email" checked>
+                    <img src="./resources/images/slider/5.jpg" class="slider__image slider__image--active"
+                        alt="Gold slide">
+                </noscript>
+            </section>
 
-                            <label class="form-check-label form__label form__label--radio" for="method_email">
-                                Email
-                            </label>
-                        </div>
+            <section class="page__section page__section--center">
+                <h2 class="page__section-header">
+                    Recommended websites in Polish
+                </h2>
 
-                        <div class="form-group form__input-and-label-wrapper">
-                            <input class="form-check-input" type="radio" name="contact_method" id="method_phone"
-                                value="phone">
+                <ul class=" home__recommendations-list">
+                    <li class="home__recommendation-list-item">
+                        <a href="https://jakoszczedzacpieniadze.pl/" class="link" target="_blank">
+                            Jak oszczędzać pieniądze - Michał Szafrański
+                        </a>
+                    </li>
 
-                            <label class="form-check-label form__label form__label--radio" for="method_phone">
-                                Phone
-                            </label>
-                        </div>
-                    </div>
+                    <li class="home__recommendation-list-item">
+                        <a href="https://marciniwuc.com/" class="link" target="_blank">
+                            Finanse Bardzo Osobiste - Marcin Iwuć
+                        </a>
+                    </li>
+                </ul>
+            </section>
 
-                    <div class="form-group form__input-and-label-wrapper">
-                        <label class="form-check-label" for="inlineFormCustomSelect">Topic of the message</label>
-                        <select class="custom-select form-check-label form__input" id="inlineFormCustomSelect" required>
-                            <option value="" selected>Choose...</option>
-                            <option value="1">Personal Finance</option>
-                            <option value="2">Investing</option>
-                            <option value="3">Collaboration with me</option>
-                            <option value="4">Regarding the website</option>
-                            <option value="5">Other</option>
-                        </select>
-                    </div>
+            <section class="page__section page__section--center">
+                <h2 class="page__section-header">
+                    Recommended literature in Polish
+                </h2>
 
-                    <div class="form-group">
-                        <label for="message">Message</label>
+                <ul class="home__recommendations-list">
+                    <li class="home__recommendation-list-item">
+                        <a href="https://finansowyninja.pl/" class="link" target="_blank">
+                            Finansowy Ninja - Michał Szafrański
+                        </a>
+                    </li>
 
-                        <textarea class="form-control form__textarea" id="message" name="message" rows="8"
-                            required></textarea>
-                    </div>
-
-                    <div class="form-group form__input-and-label-wrapper form__input-and-label-wrapper--accept-rules">
-                        <input class="form-check-input" type="checkbox" value="" id="rulesAccept" name="rulesAccept">
-
-                        <label class="form-check-label form__label form__label--accept-rules" for="rulesAccept">
-                            I accept the terms and conditions
-                        </label>
-                    </div>
-
-                    <button type="reset" class="btn btn-secondary form__reset-button">
-                        Reset the form
-                    </button>
-
-                    <button type="submit" class="btn btn-primary form__submit-button">
-                        Send message
-                    </button>
-                </form>
+                    <li class="home__recommendation-list-item">
+                        <a href="https://finansowaforteca.pl/" class="link" target="_blank">
+                            Finansowa Forteca - Marcin Iwuć
+                        </a>
+                    </li>
+                </ul>
             </section>
         </article>
     </main>
@@ -328,7 +326,6 @@
         </ul>
     </footer>
     <!-- END FOOTER -->
-
 </body>
 
 </html>

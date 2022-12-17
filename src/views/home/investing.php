@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="./resources/css/index.css">
+    <link rel="stylesheet" href="../../../resources/css/index.css">
 
     <script src="./resources/js/app.js"></script>
     <script src="./resources/js/timer.js"></script>
@@ -99,14 +99,14 @@
                 </li>
 
                 <li class="navigation__list-item navigation__list-item--active">
-                    <a href="investing"
+                    <a href="home/investing"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Investing
                     </a>
 
                     <ul class="navigation__dropdown-list">
                         <li class="navigation__dropdown-list-item">
-                            <a href="investing#types-of-assets"
+                            <a href="home/investing#types-of-assets"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 Types of assets
                             </a>
@@ -115,7 +115,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="investing#types-of-portfolios"
+                            <a href="home/investing#types-of-portfolios"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 Types of portfolios
                             </a>
@@ -124,7 +124,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="investing#set-of-basic-rules"
+                            <a href="/home/investing#set-of-basic-rules"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 Set of basic rules
                             </a>
@@ -133,14 +133,14 @@
                 </li>
 
                 <li class="navigation__list-item">
-                    <a href="faq"
+                    <a href="/home/faq"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         FAQ
                     </a>
 
                     <ul class="navigation__dropdown-list">
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#whats-the-best-time-to-start-investing"
+                            <a href="/home/faq#whats-the-best-time-to-start-investing"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What's the best time to start investing?
                             </a>
@@ -149,7 +149,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#what-is-inflation-and-how-does-it-work"
+                            <a href="/home/faq#what-is-inflation-and-how-does-it-work"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What is inflation and how does it work?
                             </a>
@@ -158,7 +158,7 @@
                         </li>
 
                         <li class="navigation__dropdown-list-item">
-                            <a href="faq#what-should-i-invest-$10000-in"
+                            <a href="/home/faq#what-should-i-invest-$10000-in"
                                 class="link link--no-hover-underline navigation__dropdown-list-item-link">
                                 What should I invest $10'000 in?
                             </a>
@@ -167,7 +167,7 @@
                 </li>
 
                 <li class="navigation__list-item">
-                    <a href="contact"
+                    <a href="/home/contact"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Contact
                     </a>

@@ -1,24 +1,28 @@
 <?
 
+require_once '../Services/PathService.php';
+
 class HomeController
 {
+    public $directoryPath = VIEWS_PATH_PREFIX . 'home/';
+
     public function index()
     {
-        include 'home_index';
+        require_once($this->directoryPath . 'index.php');
     }
 
-    public function investing()
+    public function investing(): void
     {
-        include 'home_investing';
+        require_once($this->directoryPath . 'investing.php');
     }
 
-    public function faq()
+    public function faq(): void
     {
-        include 'home_faq';
+        require_once($this->directoryPath . 'faq.php');
     }
 
-    public function contact()
+    public function contact(): void
     {
-        include 'home_contact';
+        require_once($this->directoryPath . 'contact.php');
     }
 }
