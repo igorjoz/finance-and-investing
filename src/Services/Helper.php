@@ -2,7 +2,7 @@
 
 class Helper
 {
-    public static function endsWith($string, $suffix)
+    public static function endsWith($string, $suffix): bool
     {
         $strLen = strlen($string);
         $suffixLen = strlen($suffix);
