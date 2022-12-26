@@ -6,7 +6,7 @@ class HomeController
 {
     public $directoryPath = VIEWS_PATH_PREFIX . 'home/';
 
-    public function index()
+    public function index(): void
     {
         require_once($this->directoryPath . 'index.php');
     }
@@ -24,5 +24,10 @@ class HomeController
     public function contact(): void
     {
         require_once($this->directoryPath . 'contact.php');
+    }
+
+    public function testing()
+    {
+        require_once($this->directoryPath . 'testing.php');
     }
 }

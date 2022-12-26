@@ -1,79 +1,38 @@
 <?
 
-// require_once 'Controllers/HomeController.php';
-// require 'Controllers/HomeController.php';
-// include 'Controllers/HomeController.php';
 require_once 'Controllers/HomeController.php';
 
-// use HomeController;
 
 
-
-const REDIRECT_PREFIX = 'redirect:';
-
-function dispatch($routing, $actionUrl)
+class Dispatcher
 {
-    $controllerName = $routing[$actionUrl] ?? 'default';
-    $model = [];
-    $viewName = $controllerName($model);
+    public const REDIRECT_PREFIX = 'redirect:';
+    public function dispatch($routing, $actionUrl)
+    {
+        $controllerName = $routing[$actionUrl] ?? 'default';
+        $model = [];
+        $viewName = $controllerName($model);
 
-    //$homeController = new HomeController();
+        build_response($viewName, $model);
+    }
 
-    // if ($controllerName === 'home_index') {
-    //     $viewName = HomeController::index();
-    // } elseif ($controllerName === 'home_investing') {
-    //     $viewName = HomeController::investing();
-    // } elseif ($controllerName === 'home_faq') {
-    //     $viewName = HomeController::faq();
-    // } elseif ($controllerName === 'home_contact') {
+    public function build_response($view, $model)
+    {
+        if (strpos($view, REDIRECT_PREFIX) === 0) {
+            $url = substr($view, strlen(REDIRECT_PREFIX));
 
-    //     $viewName = HomeController::contact();
-    // } else {
-    //     $viewName = '404';
-    // }
+            header("Location: " . $url);
 
-    build_response($viewName, $model);
-}
+            exit;
+        } else {
+            render($view, $model);
+        }
+    }
 
-function build_response($view, $model)
-{
-    if (strpos($view, REDIRECT_PREFIX) === 0) {
-        $url = substr($view, strlen(REDIRECT_PREFIX));
+    public function render($viewName, $model)
+    {
+        extract($model);
 
-        header("Location: " . $url);
-
-        exit;
-    } else {
-        render($view, $model);
+        include 'views/' . $viewName . '.php';
     }
 }
-function render($viewName, $model)
-{
-    extract($model);
-
-    include 'views/' . $viewName . '.php';
-}
-
-
-
-
-
-// function home_index(&$model)
-// {
-//     return 'home_index';
-// }
-
-// function home_investing(&$model)
-// {
-//     return 'home_investing';
-// }
-
-// function home_faq(&$model)
-// {
-//     return 'home_faq';
-// }
-
-// function home_contact(&$model)
-// {
-//     return 'home_contact';
-// }
