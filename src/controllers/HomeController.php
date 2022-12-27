@@ -6,28 +6,23 @@ class HomeController
 {
     public $directoryPath = VIEWS_PATH_PREFIX . 'home/';
 
-    public function index(): void
+    public function index(): int
     {
-        require_once($this->directoryPath . 'index.php');
+        return require_once($this->directoryPath . 'index.php');
     }
 
-    public function investing(): void
+    public function investing(): int
     {
-        require_once($this->directoryPath . 'investing.php');
+        return require_once($this->directoryPath . 'investing.php');
     }
 
-    public function faq(): void
+    public function faq(): int
     {
-        require_once($this->directoryPath . 'faq.php');
+        return require_once($this->directoryPath . 'faq.php');
     }
 
-    public function contact(): void
+    public function contact(): int
     {
-        require_once($this->directoryPath . 'contact.php');
-    }
-
-    public function testing()
-    {
-        require_once($this->directoryPath . 'testing.php');
+        return require_once($this->directoryPath . 'contact.php');
     }
 }
