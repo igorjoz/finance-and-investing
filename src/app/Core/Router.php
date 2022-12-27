@@ -1,18 +1,17 @@
-<?
+<?php
 
-require_once 'Controllers/HomeController.php';
-require_once 'Controllers/UserController.php';
-require_once 'Services/Helper.php';
 
-use Controller\HomeController;
+require_once '../app/Controllers/HomeController.php';
+require_once '../app/Controllers/UserController.php';
+require_once '../app/Services/Helper.php';
 
 class Router
 {
     public function route($url)
     {
-        $resourcePath = __DIR__ . str_replace("home", "web", $url);
+        $resourcePath = __DIR__ . str_replace("home", "../../web", $url);
 
-        $extension = pathinfo($resourcePath, PATHINFO_EXTENSION);
+        //$extension = pathinfo($resourcePath, PATHINFO_EXTENSION);
 
         // if ($extension !== 'php') {
         //     return readfile($resourcePath);
