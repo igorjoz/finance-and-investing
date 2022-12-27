@@ -45,11 +45,11 @@
 </head>
 
 <body class="page__preload">
-    <? include LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
+    <?php include LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
 
     <?= $pageContent ?>
 
-    <? include LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
+    <?php include LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
 </body>
 
 </html>

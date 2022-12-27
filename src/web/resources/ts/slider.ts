@@ -22,23 +22,23 @@ $(document).ready(() => {
     (<any>$('.slider__images-container')).magnificPopup({
         items: [
             {
-                src: './resources/images/slider/1.webp',
+                src: 'images/slider/1.webp',
                 title: 'Investing slide'
             },
             {
-                src: './resources/images/slider/2.png',
+                src: 'images/slider/2.png',
                 title: 'FAQ (Frequently Asked Questions) slide'
             },
             {
-                src: './resources/images/slider/3.jpg',
+                src: 'images/slider/3.jpg',
                 title: 'ETF (Exchange-traded funds) slide'
             },
             {
-                src: './resources/images/slider/4.avif',
+                src: 'images/slider/4.avif',
                 title: 'Inflation slide'
             },
             {
-                src: './resources/images/slider/5.jpg',
+                src: 'images/slider/5.jpg',
                 title: 'Gold slide'
             },
         ],

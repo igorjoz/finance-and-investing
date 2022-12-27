@@ -1,8 +1,8 @@
-<?
+<?php
 
-require_once '../Services/PathService.php';
+require_once '../app/Services/PathService.php';
 
-$pageTitle = "FAQ";
+$pageTitle = "Contact";
 
 $pageContent = file_get_contents(VIEWS_PATH_PREFIX . "home/contact.html");
 
