@@ -1,4 +1,4 @@
-<?
+<?php
 
 require_once '../Models/User.php';
 require_once '../Services/PathService.php';

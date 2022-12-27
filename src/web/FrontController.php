@@ -1,11 +1,13 @@
-<?
+<?php
 
-// require_once '../dispatcher.php';
-// require_once '../routing.php';
-require_once '../Router.php';
+require_once '../app/Core/Router.php';
 
-$router = new Router();
+if (isset($_SERVER['HTTP_X_SERVER_REQUEST']) && $_SERVER['HTTP_X_SERVER_REQUEST'] === '1') {
+    // handle server-side request
+} else {
+    $router = new Router();
 
-$actionUrl = isset($_GET['action']) ? $_GET['action'] : '/';
+    $actionUrl = isset($_GET['action']) ? $_GET['action'] : '/';
 
-$router->route($actionUrl);
+    $router->route($actionUrl);
+}

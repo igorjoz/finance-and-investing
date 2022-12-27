@@ -1,6 +1,6 @@
-<?
+<?php
 
-require_once '../Services/PathService.php';
+require_once '../app/Services/PathService.php';
 
 class HomeController
 {

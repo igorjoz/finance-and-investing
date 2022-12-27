@@ -1,4 +1,4 @@
-<?
+<?php
 
 define('VIEWS_PATH_PREFIX', '../views/');
 define('LAYOUTS_PATH_PREFIX', '../views/layouts/');
