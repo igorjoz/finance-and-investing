@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Project P.F.I - Personal Finances & Investing</title>
+    <title>Project P.F.I - Personal Finances & Investing <?= isset($pageTitle) ? " - " . $pageTitle : "" ?></title>
     <meta name="description" content="Personal website about my hobby - Personal Finances & Investing">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
 
     <script src="./resources/js/app.js"></script>
     <script src="./resources/js/timer.js"></script>
-    <script src="./resources/js/slider.js"></script>
+    <?= isset($additionalScripts) ? $additionalScripts : "" ?>
 
     <link rel="apple-touch-icon" sizes="180x180" href="./resources/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./resources/images/favicon/favicon-32x32.png">
@@ -45,107 +45,11 @@
 </head>
 
 <body class="page__preload">
-    <? include "./components/navigation.php"; ?>
+    <? include LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
 
-    <!-- MAIN -->
-    <main class="page__main">
-        <article class="page__article">
-            <header class="page__article-header">
-                <h1 class="page__article-header-text">
-                    Homepage
-                </h1>
-            </header>
+    <?= $pageContent ?>
 
-            <section class="page__section page__section--center">
-                <div class="slider__wrapper">
-                    <img src="../../web/images/slider/previous.png" class="slider__previous-icon"
-                        alt="Previous slide icon">
-
-                    <div class="slider__images-container">
-                        <!-- <img src="./resources/images/slider/1.webp" class="slider__image slider__image--active"
-                            alt="Investing slide"> -->
-
-                        <img src="../../web/images/slider/1.webp" class="slider__image slider__image--active"
-                            alt="Investing slide">
-
-                        <!-- ../../web/images/slider/previous.png -->
-
-                        <img src="./resources/images/slider/2.png" class="slider__image"
-                            alt="FAQ (Frequently Asked Questions) slide">
-
-                        <img src="./resources/images/slider/3.jpg" class="slider__image"
-                            alt="ETF (Exchange-traded funds) slide">
-
-                        <img src="./resources/images/slider/4.avif" class="slider__image" alt="Inflation slide">
-
-                        <img src="./resources/images/slider/5.jpg" class="slider__image" alt="Gold slide">
-                    </div>
-
-                    <img src="./resources/images/slider/next.png" class="slider__next-icon" alt="Next slide icon">
-                </div>
-
-                <noscript>
-                    <img src="./resources/images/slider/1.webp" class="slider__image slider__image--active"
-                        alt="Investing slide">
-
-                    <img src="./resources/images/slider/2.png" class="slider__image"
-                        alt="FAQ (Frequently Asked Questions) slide">
-
-                    <img src="./resources/images/slider/3.jpg" class="slider__image slider__image--active"
-                        alt="ETF (Exchange-traded funds) slide">
-
-                    <img src="./resources/images/slider/4.avif" class="slider__image slider__image--active"
-                        alt="Inflation slide">
-
-                    <img src="./resources/images/slider/5.jpg" class="slider__image slider__image--active"
-                        alt="Gold slide">
-                </noscript>
-            </section>
-
-            <section class="page__section page__section--center">
-                <h2 class="page__section-header">
-                    Recommended websites in Polish
-                </h2>
-
-                <ul class=" home__recommendations-list">
-                    <li class="home__recommendation-list-item">
-                        <a href="https://jakoszczedzacpieniadze.pl/" class="link" target="_blank">
-                            Jak oszczędzać pieniądze - Michał Szafrański
-                        </a>
-                    </li>
-
-                    <li class="home__recommendation-list-item">
-                        <a href="https://marciniwuc.com/" class="link" target="_blank">
-                            Finanse Bardzo Osobiste - Marcin Iwuć
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="page__section page__section--center">
-                <h2 class="page__section-header">
-                    Recommended literature in Polish
-                </h2>
-
-                <ul class="home__recommendations-list">
-                    <li class="home__recommendation-list-item">
-                        <a href="https://finansowyninja.pl/" class="link" target="_blank">
-                            Finansowy Ninja - Michał Szafrański
-                        </a>
-                    </li>
-
-                    <li class="home__recommendation-list-item">
-                        <a href="https://finansowaforteca.pl/" class="link" target="_blank">
-                            Finansowa Forteca - Marcin Iwuć
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </article>
-    </main>
-    <!-- END MAIN -->
-
-    <? include "./components/navigation.php"; ?>
+    <? include LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
 </body>
 
 </html>
