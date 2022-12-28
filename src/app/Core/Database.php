@@ -1,13 +1,15 @@
 <?php
 
-class DB
+require '../vendor/autoload.php';
+
+class Database
 {
-    private static $db = null;
+    private static $database = null;
 
     public static function get()
     {
-        if (!isset(static::$db)) {
-            static::$db = new MongoDB\Client(
+        if (!isset(static::$database)) {
+            static::$database = new MongoDB\Client(
                 "mongodb://127.0.0.1:27017/wai",
                 [
                     'username' => 'wai_web',
@@ -16,6 +18,6 @@ class DB
             );
         }
 
-        return static::$db->wai;
+        return static::$database->wai;
     }
 }
