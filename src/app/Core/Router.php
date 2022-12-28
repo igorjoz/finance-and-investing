@@ -1,75 +1,47 @@
 <?php
 
-
-require_once '../app/Controllers/HomeController.php';
-require_once '../app/Controllers/UserController.php';
-require_once '../app/Services/Helper.php';
-
 class Router
 {
-    public function route($url)
+    private $get;
+    private $post;
+    private $errors;
+
+    public function __construct()
     {
-        $resourcePath = __DIR__ . str_replace("home", "../../web", $url);
+        $this->get = [];
+        $this->post = [];
+    }
 
-        //$extension = pathinfo($resourcePath, PATHINFO_EXTENSION);
+    public function get($path, $action)
+    {
+        $this->get[$path] = $action;
+    }
 
-        // if ($extension !== 'php') {
-        //     return readfile($resourcePath);
-        // }
+    public function post($path, $action)
+    {
+        $this->post[$path] = $action;
+    }
 
-        if (Helper::endsWith($url, '.css')) {
-            header('Content-Type: text/css');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.js')) {
-            header('Content-Type: application/javascript');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.png')) {
-            header('Content-Type: image/png');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.jpg')) {
-            header('Content-Type: image/jpg');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.jpeg')) {
-            header('Content-Type: image/jpeg');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.webp')) {
-            header('Content-Type: image/webp');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.avif')) {
-            header('Content-Type: image/avif');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.gif')) {
-            header('Content-Type: image/gif');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.svg')) {
-            header('Content-Type: image/svg+xml');
-            return readfile($resourcePath);
-        } elseif (Helper::endsWith($url, '.ico')) {
-            header('Content-Type: image/x-icon');
-            return readfile($resourcePath);
+    public function _404($action)
+    {
+        $this->errors['404'] = $action;
+    }
+
+    public function dispatch()
+    {
+        $path = explode('?', $_SERVER['REQUEST_URI'])[0];
+        $method = strtolower($_SERVER['REQUEST_METHOD']);
+
+        if (isset($this->$method) && isset($this->$method[$path])) {
+            $action = explode('::', $this->$method[$path]);
         } else {
-            header('Content-Type: text/html');
+            $action = explode('::', $this->errors['404']);
         }
 
-        $controller = 'HomeController';
-        $action = 'index';
+        $controller = $action[0];
+        $handler = $action[1];
 
-        if ($url != '/') {
-            $parts = explode('/', $url);
-
-            array_shift($parts); // skip first empty element
-
-            $controller = ucfirst(array_shift($parts)) . 'Controller';
-
-            if (count($parts) > 0) {
-                $action = array_shift($parts);
-            } else {
-                $action = 'index';
-            }
-        }
-
-        // Create an instance of the controller and invoke the action
-        $controller = new $controller();
-        $controller->$action();
+        require_once "../app/Controllers/{$controller}.php";
+        return (new $controller)->$handler();
     }
 }
