@@ -1,9 +1,10 @@
 <?php
 
-class RedirectView
+require_once '../app/Core/View.php';
+
+class RedirectView extends View
 {
     private $path;
-    private $code;
 
     public function __construct($path, $code)
     {
@@ -11,9 +12,26 @@ class RedirectView
         $this->code = $code;
     }
 
-    public function render()
+    public function renderHead()
     {
-        http_response_code($this->code);
         header("Location: {$this->path}");
     }
 }
+
+// class RedirectView
+// {
+//     private $path;
+//     private $code;
+
+//     public function __construct($path, $code)
+//     {
+//         $this->path = $path;
+//         $this->code = $code;
+//     }
+
+//     public function render()
+//     {
+//         http_response_code($this->code);
+//         header("Location: {$this->path}");
+//     }
+// }
