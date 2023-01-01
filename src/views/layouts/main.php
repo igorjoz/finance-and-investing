@@ -1,3 +1,9 @@
+<?php
+
+require_once '../app/Services/PathService.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,37 +25,44 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="./resources/js/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <link rel="stylesheet" href="./resources/js/magnific-popup/magnific-popup.css">
+    <script src="../resources/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="../resources/js/magnific-popup/magnific-popup.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="./resources/css/index.css">
+    <link rel="stylesheet" href="../resources/css/index.css">
 
-    <script src="./resources/js/app.js"></script>
-    <script src="./resources/js/timer.js"></script>
-    <?= isset($additionalScripts) ? $additionalScripts : "" ?>
+    <script src="../resources/js/app.js"></script>
+    <script src="../resources/js/timer.js"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./resources/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./resources/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./resources/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./resources/images/favicon/site.webmanifest">
-    <link rel="mask-icon" href="./resources/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="./resources/images/favicon/favicon.ico">
+    <?php
+    if (isset($additionalScripts)) {
+        foreach ($additionalScripts as $script) {
+            echo "<script src='../resources/js/$script'></script>";
+        }
+    }
+    ?>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="../images/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="./resources/images/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="../images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="page__preload">
-    <?php include LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
+    <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
 
-    <?= $pageContent ?>
+    <?= isset($pageContent) ? $pageContent : "" ?>
 
-    <?php include LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
+    <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
 </body>
 
 </html>
