@@ -58,6 +58,6 @@ abstract class Model
     static private function getCollection()
     {
         $collectionName = strtolower(get_called_class()) . 's';
-        return DB::get()->$collectionName;
+        return Database::get()->$collectionName;
     }
 }

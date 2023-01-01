@@ -1,85 +1,98 @@
 <?php
 
-class User
+// class User
+// {
+//     protected $id;
+//     protected $email;
+//     protected $password;
+//     protected $name;
+
+//     public function __construct($id, $email, $password, $name)
+//     {
+//         $this->id = $id;
+//         $this->email = $email;
+//         $this->password = $password;
+//         $this->name = $name;
+//     }
+
+//     public function getId()
+//     {
+//         return $this->id;
+//     }
+
+//     public function getEmail()
+//     {
+//         return $this->email;
+//     }
+
+//     public function getPassword()
+//     {
+//         return $this->password;
+//     }
+
+//     public function getName()
+//     {
+//         return $this->name;
+//     }
+
+//     public function setName($name)
+//     {
+//         $this->name = $name;
+//     }
+
+//     public static function isLoggedIn(): bool
+//     {
+//         return isset($_SESSION['user']);
+//     }
+// }
+
+
+
+
+
+require_once '../app/Core/Model.php';
+
+class User extends Model
 {
-    protected $id;
-    protected $email;
-    protected $password;
-    protected $name;
+    public $name;
+    public $email;
+    public $passwordHash;
 
-    public function __construct($id, $email, $password, $name)
+    public function __construct($name, $email, $passwordHash)
     {
-        $this->id = $id;
+        $this->name = $name;
         $this->email = $email;
-        $this->password = $password;
-        $this->name = $name;
+        $this->passwordHash = $passwordHash;
     }
 
-    public function getId()
+    public function validPassword($password)
     {
-        return $this->id;
+        return password_verify($password, $this->passwordHash);
     }
 
-    public function getEmail()
+    protected function serialize()
     {
-        return $this->email;
+        $object = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'passwordHash' => $this->passwordHash
+        ];
+        return array_merge(parent::serialize(), $object);
     }
 
-    public function getPassword()
+    static protected function deserialize($object)
     {
-        return $this->password;
+        $instance = new static (
+            $object['name'],
+            $object['email'],
+            $object['passwordHash']
+        );
+        $instance->id = (string) $object['_id'];
+        return $instance;
     }
 
-    public function getName()
+    static public function getCurrentUser()
     {
-        return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public static function isLoggedIn(): bool
-    {
-        return isset($_SESSION['user']);
+        return isset($_SESSION['user']) ? User::get(['name' => $_SESSION['user']]) : null;
     }
 }
-
-// <?php
-// require_once '../Model.php';
-
-// class User extends Model {
-//   public $name;
-//   public $email;
-//   public $passwordHash;
-
-//   public function __construct($name, $email, $passwordHash) {
-//     $this->name = $name;
-//     $this->email = $email;
-//     $this->passwordHash = $passwordHash;
-//   }
-
-//   public function validPassword($password) {
-//     return password_verify($password, $this->passwordHash);
-//   }
-
-//   protected function serialize() {
-//     $object = [
-//       'name' => $this->name,
-//       'email' => $this->email,
-//       'passwordHash' => $this->passwordHash
-//     ];
-//     return array_merge(parent::serialize(), $object);
-//   }
-
-//   static protected function deserialize($object) {
-//     $instance = new static(
-//       $object['name'],
-//       $object['email'],
-//       $object['passwordHash']
-//     );
-//     $instance->id = (string)$object['_id'];
-//     return $instance;
-//   }
-// }
