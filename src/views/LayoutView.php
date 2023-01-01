@@ -17,8 +17,7 @@ class LayoutView extends View
     {
         $template = "{$this->template}.php";
         extract($this->data);
-        // include "./layouts/{$this->layout}.php";
+
         include "../views/layouts/{$this->layout}.php";
-        // include "../layouts/{$this->layout}.php";
     }
 }

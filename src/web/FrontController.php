@@ -5,7 +5,11 @@ require_once '../app/Core/Router.php';
 
 $router = new Router();
 
+// * load routes from routes/web.php
 require_once '../routes/web.php';
 
 $view = $router->dispatch();
-$view->render();
+
+if ($view instanceof View) {
+    $view->render();
+}

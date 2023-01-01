@@ -10,7 +10,7 @@ $router->get('/home/contact', 'HomeController::contact');
 
 // * user
 $router->get('/user/create', 'UserController::create');
-$router->post('/user/create', 'UserController::store');
+$router->post('/user', 'UserController::store');
 $router->get('/user/login', 'UserController::loginForm');
 $router->post('/user/login', 'UserController::login');
 $router->post('/user/logout', 'UserController::logout');
@@ -39,5 +39,7 @@ $router->get('/gallery', 'ImageController::index');
 // * testing
 $router->get('/post/create', 'PostController::create');
 $router->get('/posts', 'PostController::index');
+$router->post('/post/create', 'PostController::store');
 
-$router->post('/post', 'PostController::add');
+// * admin panel
+$router->get('/users', 'UserController::index');

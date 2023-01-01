@@ -1,7 +1,8 @@
 <nav class="navigation">
     <header class="navigation__header-element">
         <h1 class="navigation__main-header">
-            <img src="images/stocks-icon.svg" alt="Investing icon" class="navigation__logo">
+            <img src="../images/stocks-icon.svg" alt="Investing icon" class="navigation__logo">
+
             <a href="/" class="link link--no-hover-underline link--default-font-color navigation__main-header-link"
                 id="navigation__main-header-link">
                 Project P.F.I
