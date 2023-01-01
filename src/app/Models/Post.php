@@ -19,6 +19,7 @@ class Post
             'title' => $this->title,
             'contents' => $this->contents
         ]);
+
         $this->_id = $response->getInsertedId();
     }
 
@@ -26,6 +27,7 @@ class Post
     {
         $response = Database::get()->posts->find([]);
         $posts = [];
+
         foreach ($response as $post) {
             $posts[] = new Post($post['title'], $post['contents']);
         }
