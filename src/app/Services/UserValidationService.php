@@ -5,7 +5,7 @@
 
 class UserValidationService
 {
-    public static function validateStoreData(string $name, string $email, string $password, string $repeatedPassword, User $user): bool
+    public static function validateStoreData(string $name, string $email, string $password, string $repeatedPassword, $user): bool
     {
         $isValid = true;
 

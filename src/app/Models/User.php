@@ -65,34 +65,50 @@ class User extends Model
         $this->passwordHash = $passwordHash;
     }
 
-    public function validPassword($password)
+    // public function getAll()
+    // {
+    //     $response = Database::get()->posts->find([]);
+    //     $posts = [];
+
+    //     foreach ($response as $post) {
+    //         $posts[] = new Post($post['title'], $post['contents']);
+    //     }
+
+    //     return $posts;
+    // }
+
+    public function validPassword($password): bool
     {
         return password_verify($password, $this->passwordHash);
     }
 
-    protected function serialize()
+    protected function serialize(): array
     {
         $object = [
             'name' => $this->name,
             'email' => $this->email,
             'passwordHash' => $this->passwordHash
         ];
+
         return array_merge(parent::serialize(), $object);
     }
 
-    static protected function deserialize($object)
+    static protected function deserialize($object): User
     {
-        $instance = new static (
-            $object['name'],
-            $object['email'],
-            $object['passwordHash']
-        );
+        $instance = new static ($object['name'], $object['email'], $object['passwordHash']);
+
         $instance->id = (string) $object['_id'];
+
         return $instance;
     }
 
-    static public function getCurrentUser()
+    static public function getCurrentUser(): User
     {
         return isset($_SESSION['user']) ? User::get(['name' => $_SESSION['user']]) : null;
+    }
+
+    static public function isLoggedIn(): bool
+    {
+        return isset($_SESSION['user']);
     }
 }

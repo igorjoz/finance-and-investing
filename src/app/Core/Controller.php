@@ -1,7 +1,5 @@
 <?php
 
-require_once 'business.php';
-
 function products(&$model)
 {
     // $cat = $_GET['cat'];

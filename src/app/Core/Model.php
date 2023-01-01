@@ -8,8 +8,8 @@ abstract class Model
     protected function serialize()
     {
         $object = [
-            //'_id' => new MongoDB\BSON\ObjectId($this->id)
-            '_id' => new MongoDB($this->id)
+            '_id' => new MongoDB\BSON\ObjectId($this->id)
+            // '_id' => new MongoDB($this->id)
         ];
         return $object;
     }
