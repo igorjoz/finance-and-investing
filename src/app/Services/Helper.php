@@ -13,4 +13,9 @@ class Helper
 
         return substr_compare($string, $suffix, $strLen - $suffixLen, $suffixLen) === 0;
     }
+
+    public static function post($name, $default = '')
+    {
+        return isset($_POST[$name]) ? $_POST[$name] : $default;
+    }
 }
