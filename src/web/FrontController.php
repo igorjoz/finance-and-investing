@@ -2,6 +2,7 @@
 
 require_once '../vendor/autoload.php';
 require_once '../app/Core/Router.php';
+require_once '../app/Core/Database.php';
 
 $router = new Router();
 
@@ -13,3 +14,12 @@ $view = $router->dispatch();
 if ($view instanceof View) {
     $view->render();
 }
+
+// delete users collection
+// Database::get()->users->drop();
+
+// delete images collection
+// Database::get()->images->drop();
+
+// delete posts collection
+// Database::get()->posts->drop();

@@ -1,5 +1,5 @@
 <?php
-require_once '../Core/View.php';
+require_once '../app/Core/View.php';
 
 class JsonView extends View
 {

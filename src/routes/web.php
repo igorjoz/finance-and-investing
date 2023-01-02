@@ -18,7 +18,7 @@ $router->get('/user/logout', 'UserController::logout');
 // * image
 $router->get('/images', 'ImageController::index');
 $router->get('/image/create', 'ImageController::create');
-$router->post('/image/create', 'ImageController::store');
+$router->post('/image', 'ImageController::store');
 
 // * error handling
 $router->_404('ErrorController::_404');
