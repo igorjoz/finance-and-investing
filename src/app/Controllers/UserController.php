@@ -44,8 +44,7 @@ class UserController
             FlashMessageService::info("You can now log in");
             return new RedirectView('/login', 303);
         } else {
-            var_dump($isValid);
-            return new RedirectView('/signup', 303);
+            require_once '../views/user/create.php';
         }
     }
 
@@ -60,17 +59,20 @@ class UserController
 
     public function login()
     {
+        session_start();
+
         $name = Helper::post('name');
         $password = Helper::post('password');
+
         $user = User::get(['name' => $name]);
 
         if (!$user or !$user->validPassword($password)) {
             FlashMessageService::error("Wrong credentials");
-            return new RedirectView('/user/login', 303);
+            require_once '../views/user/login-form.php';
         } else {
-            $_SESSION['user'] = $name;
+            $_SESSION['user'] = $user;
             FlashMessageService::info("Welcome! You're now logged in.");
-            return new RedirectView('/', 303);
+            require_once '../views/home/index.php';
         }
     }
 

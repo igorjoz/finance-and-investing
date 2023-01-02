@@ -1,4 +1,5 @@
 <?php
+
 require_once 'Database.php';
 
 abstract class Model
@@ -11,6 +12,7 @@ abstract class Model
             '_id' => new MongoDB\BSON\ObjectId($this->id)
             // '_id' => new MongoDB($this->id)
         ];
+
         return $object;
     }
 
@@ -32,6 +34,7 @@ abstract class Model
     static public function get($query = [])
     {
         $object = static::getCollection()->findOne($query);
+
         if ($object) {
             return static::deserialize($object);
         } else {
@@ -41,8 +44,8 @@ abstract class Model
     static public function getAll($query = [])
     {
         $cursor = static::getCollection()->find($query);
-
         $objects = [];
+
         foreach ($cursor as $object) {
             array_push($objects, static::deserialize($object));
         }
@@ -50,7 +53,7 @@ abstract class Model
         return $objects;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }

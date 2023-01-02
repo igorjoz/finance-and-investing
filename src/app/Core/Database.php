@@ -18,6 +18,20 @@ class Database
             );
         }
 
+
+        // $dotenv = new Dotenv\Dotenv(__DIR__);
+        // $dotenv->load();
+
+        // if (!isset(static::$database)) {
+        //     static::$database = new MongoDB\Client(
+        //         getenv('DB_HOST'),
+        //         [
+        //             'username' => getenv('DB_USERNAME'),
+        //             'password' => getenv('DB_PASSWORD')
+        //         ]
+        //     );
+        // }
+
         return static::$database->wai;
     }
 }

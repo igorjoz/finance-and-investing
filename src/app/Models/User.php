@@ -1,55 +1,5 @@
 <?php
 
-// class User
-// {
-//     protected $id;
-//     protected $email;
-//     protected $password;
-//     protected $name;
-
-//     public function __construct($id, $email, $password, $name)
-//     {
-//         $this->id = $id;
-//         $this->email = $email;
-//         $this->password = $password;
-//         $this->name = $name;
-//     }
-
-//     public function getId()
-//     {
-//         return $this->id;
-//     }
-
-//     public function getEmail()
-//     {
-//         return $this->email;
-//     }
-
-//     public function getPassword()
-//     {
-//         return $this->password;
-//     }
-
-//     public function getName()
-//     {
-//         return $this->name;
-//     }
-
-//     public function setName($name)
-//     {
-//         $this->name = $name;
-//     }
-
-//     public static function isLoggedIn(): bool
-//     {
-//         return isset($_SESSION['user']);
-//     }
-// }
-
-
-
-
-
 require_once '../app/Core/Model.php';
 
 class User extends Model
@@ -64,18 +14,6 @@ class User extends Model
         $this->email = $email;
         $this->passwordHash = $passwordHash;
     }
-
-    // public function getAll()
-    // {
-    //     $response = Database::get()->posts->find([]);
-    //     $posts = [];
-
-    //     foreach ($response as $post) {
-    //         $posts[] = new Post($post['title'], $post['contents']);
-    //     }
-
-    //     return $posts;
-    // }
 
     public function validPassword($password): bool
     {
@@ -102,9 +40,10 @@ class User extends Model
         return $instance;
     }
 
-    static public function getCurrentUser(): User
+    static public function getCurrentUser()
     {
-        return isset($_SESSION['user']) ? User::get(['name' => $_SESSION['user']]) : null;
+        // return isset($_SESSION['user']) ? User::get(['name' => $_SESSION['user']]) : null;
+        return isset($_SESSION['user']) ? $_SESSION['user'] : null;
     }
 
     static public function isLoggedIn(): bool

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../app/Services/PathService.php';
+require_once '../app/Models/User.php';
 
 ?>
 
@@ -59,6 +60,16 @@ require_once '../app/Services/PathService.php';
 
 <body class="page__preload">
     <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
+
+    <?php
+
+    if (User::isLoggedIn()) {
+        echo "<div>SER</div>";
+    } else {
+        echo "<div>NIJE</div>";
+    }
+
+    ?>
 
     <?= isset($pageContent) ? $pageContent : "" ?>
 
