@@ -73,6 +73,8 @@ require_once '../app/Models/User.php';
 
     <?= isset($pageContent) ? $pageContent : "" ?>
 
+    <?php isset($file) ? require_once $file : "" ?>
+
     <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
 </body>
 

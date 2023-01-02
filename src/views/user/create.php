@@ -1,35 +1,9 @@
-<form action="/user" method="POST">
-    <label for="name">
-        Name:
-    </label>
-    <input type="text" name="name">
+<?php
 
-    <br>
-    <br>
+require_once '../app/Services/PathService.php';
 
-    <label for="email">
-        Email:
-    </label>
-    <input type="email" name="email">
+$pageTitle = "Login page";
+$pageContent = file_get_contents(VIEWS_PATH_PREFIX . "user/create-content.php");
+include_once LAYOUTS_PATH_PREFIX . "main.php";
 
-    <br>
-    <br>
-
-    <label for="password">
-        Password:
-    </label>
-    <input type="password" name="password">
-
-    <br>
-    <br>
-
-    <label for="repeated_password">
-        Repeat password:
-    </label>
-    <input type="password" name="repeated_password">
-
-    <br>
-    <br>
-
-    <input type="submit" value="Sign up">
-</form>
+?>

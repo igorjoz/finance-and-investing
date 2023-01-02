@@ -1,3 +1,9 @@
+<?php
+
+require_once '../app/Services/PathService.php';
+
+?>
+
 <nav class="navigation">
     <header class="navigation__header-element">
         <h1 class="navigation__main-header">
@@ -12,13 +18,20 @@
 
     <div class="navigation__list-wrapper">
         <ul class="navigation__list">
-            <li class="navigation__list-item navigation__list-item--active">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/') ?>">
                 <a href="/" class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Home
                 </a>
             </li>
 
-            <li class="navigation__list-item">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/images') ?>">
+                <a href="/images"
+                    class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                    Gallery
+                </a>
+            </li>
+
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/investing') ?>">
                 <a href="/home/investing"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Investing
@@ -52,7 +65,7 @@
                 </ul>
             </li>
 
-            <li class="navigation__list-item">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/faq') ?>">
                 <a href="/home/faq"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     FAQ
@@ -86,12 +99,35 @@
                 </ul>
             </li>
 
-            <li class="navigation__list-item">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/contact') ?>">
                 <a href="/home/contact"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Contact
                 </a>
             </li>
+
+            <?php if (User::isLoggedIn()): ?>
+                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/user/logout') ?>">
+                    <a href="/user/logout"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Logout
+                    </a>
+                </li>
+
+                <?php else: ?>
+
+                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/user/login') ?>">
+                    <a href="/user/login"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Login
+                    </a>
+                </li>
+
+                <?php endif; ?>
+
         </ul>
+
+
+
     </div>
 </nav>
