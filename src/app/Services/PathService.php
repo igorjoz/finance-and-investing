@@ -11,24 +11,24 @@ class PathService
         return VIEWS_PATH_PREFIX . $path . '.php';
     }
 
-    public static function layout(string $path): string
+    public static function layout(string $file): string
     {
-        return LAYOUTS_PATH_PREFIX . $path . '.php';
+        return LAYOUTS_PATH_PREFIX . $file . '.php';
     }
 
-    public static function layoutComponent(string $path): string
+    public static function layoutComponent(string $file): string
     {
-        return LAYOUTS_COMPONENTS_PATH_PREFIX . $path . '.php';
+        return LAYOUTS_COMPONENTS_PATH_PREFIX . $file . '.php';
     }
 
-    public static function isCurrentPath(string $path): bool
+    public static function isCurrentUri(string $uri): bool
     {
-        return $_SERVER['REQUEST_URI'] === $path;
+        return $_SERVER['REQUEST_URI'] === $uri;
     }
 
-    public static function activeElementIfIsCurrentPath(string $path): string
+    public static function activeElementIfIsCurrentUri(string $uri): string
     {
-        if (!self::isCurrentPath($path)) {
+        if (!self::isCurrentUri($uri)) {
             return "";
         }
 

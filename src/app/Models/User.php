@@ -42,8 +42,17 @@ class User extends Model
 
     static public function getCurrentUser()
     {
-        // return isset($_SESSION['user']) ? User::get(['login' => $_SESSION['user']]) : null;
         return isset($_SESSION['user']) ? $_SESSION['user'] : null;
+    }
+
+    static public function getLogin(): string
+    {
+        return $_SESSION['user']->login;
+    }
+
+    static public function getEmail(): string
+    {
+        return $_SESSION['user']->email;
     }
 
     static public function isLoggedIn(): bool

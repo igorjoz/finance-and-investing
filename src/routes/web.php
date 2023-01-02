@@ -13,7 +13,7 @@ $router->get('/user/create', 'UserController::create');
 $router->post('/user', 'UserController::store');
 $router->get('/user/login', 'UserController::loginForm');
 $router->post('/user/login', 'UserController::login');
-$router->post('/user/logout', 'UserController::logout');
+$router->get('/user/logout', 'UserController::logout');
 
 // * image
 $router->get('/images', 'ImageController::index');

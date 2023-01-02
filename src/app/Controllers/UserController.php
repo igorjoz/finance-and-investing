@@ -81,7 +81,7 @@ class UserController
             $_SESSION['user'] = $user;
 
             FlashMessageService::info("Welcome! You're now logged in.");
-            require_once '../views/home/index.php';
+            return new RedirectView('/', 303);
         }
     }
 
@@ -92,8 +92,8 @@ class UserController
         unset($_SESSION['user']);
 
         session_destroy();
-        header('Location: /');
 
-        exit;
+        FlashMessageService::info("You have logged out successfully!");
+        return new RedirectView('/', 303);
     }
 }

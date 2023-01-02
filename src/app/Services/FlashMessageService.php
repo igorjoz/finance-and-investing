@@ -17,7 +17,7 @@ class FlashMessageService
         array_push($_SESSION['flash'][$key], $value);
     }
 
-    static public function get($key = null)
+    static public function getFlashMessages($key = null)
     {
         if ($key) {
             $messages = $_SESSION['flash'][$key];
@@ -26,6 +26,7 @@ class FlashMessageService
             $messages = $_SESSION['flash'];
             $_SESSION['flash'] = [];
         }
+
         return $messages;
     }
 
