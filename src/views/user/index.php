@@ -15,7 +15,7 @@
         <?php foreach ($users as $user): ?>
             <li>
                 <h2>
-                    <?= $user->name ?>
+                    <?= $user->login ?>
                 </h2>
             </li>
             <?php endforeach; ?>

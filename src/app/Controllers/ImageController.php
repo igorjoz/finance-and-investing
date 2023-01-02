@@ -90,32 +90,32 @@ class ImageController
 
     public function add()
     {
-        $user = currentUser();
+        $user = User::getCurrentUser();
         $valid = true;
 
         if ($user) {
-            $author = $user->name;
+            $author = $user->login;
         } else {
-            $author = post('author');
+            $author = Helper::post('author');
             if ($author == '') {
                 $valid = false;
-                Flash::error("Author can't be empty");
+                FlashMessageService::error("Author can't be empty");
             }
         }
 
-        $title = post('title');
+        $title = Helper::post('title');
         if ($title == '') {
             $valid = false;
-            Flash::error("Title can't be empty");
+            FlashMessageService::error("Title can't be empty");
         }
 
-        $watermark = post('watermark');
+        $watermark = Helper::post('watermark');
         if ($watermark == '') {
             $valid = false;
-            Flash::error("Watermark can't be empty");
+            FlashMessageService::error("Watermark can't be empty");
         }
 
-        $access = post('access');
+        $access = Helper::post('access');
         if ($access == '') {
             if ($user) {
                 $valid = false;
@@ -126,33 +126,33 @@ class ImageController
             $public = $access == 'public';
         }
 
-        if (isset($_FILES['img']) && $_FILES['img']['size'] > 0) {
-            $filePath = $_FILES['img']['tmp_name'];
+        if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
+            $filePath = $_FILES['image']['tmp_name'];
             $type = mime_content_type($filePath);
             $format = explode('/', $type)[1];
             if ($format !== 'jpeg' && $format !== 'png') {
                 $valid = false;
-                Flash::error("\"{$type}\" is not an acceptable file type");
+                FlashMessageService::error("\"{$type}\" is not an acceptable file type");
             }
 
-            $fileSize = $_FILES['img']['size'];
+            $fileSize = $_FILES['image']['size'];
             if ($fileSize > 1024 * 1024) {
                 $valid = false;
-                Flash::error("The image is too big (max 1 MB)");
+                FlashMessageService::error("The image is too big (max 1 MB)");
             }
         } else {
             $valid = false;
-            Flash::error("File can't be empty");
+            FlashMessageService::error("File can't be empty");
         }
 
         if ($valid) {
-            $img = new Img($author, $title, $public, $format);
-            $img->save();
-            $id = $img->id();
+            $image = new Image($author, $title, $public, $format);
+            $image->save();
+            $id = $image->id();
             $name = "{$id}.{$format}";
             $path = getcwd() . "/images/{$name}";
             if (!rename($filePath, $path)) {
-                Flash::error("Couldn't save file");
+                FlashMessageService::error("Couldn't save file");
             }
 
             $thumbnailPath = getcwd() . "/thumb/{$id}.png";
@@ -161,20 +161,20 @@ class ImageController
             $watermarkPath = getcwd() . "/preview/{$id}.png";
             generateWatermark($path, $watermarkPath, $format, $watermark);
 
-            Flash::info('Image added');
+            FlashMessageService::info('Image added');
         }
 
-        return new RedirectView('/img/new', 303);
+        return new RedirectView('/image/new', 303);
     }
 
     public function index()
     {
-        $user = currentUser();
-        $imgs = Img::getAll();
-        $imgs = array_filter($imgs, function ($img) use ($user) {
-            return $img->public || ($user && $img->author == $user->name);
+        $user = User::getCurrentUser();
+        $images = Image::getAll();
+        $images = array_filter($images, function ($image) use ($user) {
+            return $image->public || ($user && $image->author == $user->login);
         });
-        return new LayoutView('imglist', ['imgs' => $imgs]);
+        return new LayoutView('imglist', ['images' => $images]);
     }
 
     public function search()
@@ -185,16 +185,16 @@ class ImageController
     public function get()
     {
         $title = $_GET['title'];
-        $imgs = Img::getAll([
+        $images = Image::getAll([
             'title' => new MongoDB\BSON\Regex($title, 'i')
         ]);
-        $user = currentUser();
-        $imgs = array_values(array_filter($imgs, function ($img) use ($user) {
-            return $img->public || ($user && $user->name == $img->author);
+        $user = User::getCurrentUser();
+        $images = array_values(array_filter($images, function ($image) use ($user) {
+            return $image->public || ($user && $user->login == $image->author);
         }));
-        $ids = array_map(function ($img) {
-            return $img->id();
-        }, $imgs);
+        $ids = array_map(function ($image) {
+            return $image->id();
+        }, $images);
         return new JsonView($ids);
     }
 }

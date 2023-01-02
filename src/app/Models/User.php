@@ -4,18 +4,18 @@ require_once '../app/Core/Model.php';
 
 class User extends Model
 {
-    public $name;
+    public $login;
     public $email;
     public $passwordHash;
 
-    public function __construct($name, $email, $passwordHash)
+    public function __construct($login, $email, $passwordHash)
     {
-        $this->name = $name;
+        $this->login = $login;
         $this->email = $email;
         $this->passwordHash = $passwordHash;
     }
 
-    public function validPassword($password): bool
+    public function isPasswordValid($password): bool
     {
         return password_verify($password, $this->passwordHash);
     }
@@ -23,7 +23,7 @@ class User extends Model
     protected function serialize(): array
     {
         $object = [
-            'name' => $this->name,
+            'login' => $this->login,
             'email' => $this->email,
             'passwordHash' => $this->passwordHash
         ];
@@ -33,7 +33,7 @@ class User extends Model
 
     static protected function deserialize($object): User
     {
-        $instance = new static ($object['name'], $object['email'], $object['passwordHash']);
+        $instance = new static ($object['login'], $object['email'], $object['passwordHash']);
 
         $instance->id = (string) $object['_id'];
 
@@ -42,7 +42,7 @@ class User extends Model
 
     static public function getCurrentUser()
     {
-        // return isset($_SESSION['user']) ? User::get(['name' => $_SESSION['user']]) : null;
+        // return isset($_SESSION['user']) ? User::get(['login' => $_SESSION['user']]) : null;
         return isset($_SESSION['user']) ? $_SESSION['user'] : null;
     }
 

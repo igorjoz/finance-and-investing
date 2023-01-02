@@ -1,8 +1,8 @@
 <form action="/user/login" method="POST">
-    <label for="name">
-        Name:
+    <label for="login">
+        Login:
     </label>
-    <input type="text" name="name">
+    <input type="text" name="login">
 
     <label for="password">
         Password:

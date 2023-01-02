@@ -30,19 +30,22 @@ class UserController
 
     public function store()
     {
-        $name = Helper::post('name');
+        $login = Helper::post('login');
         $email = Helper::post('email');
         $password = Helper::post('password');
         $repeatedPassword = Helper::post('repeated_password');
-        $user = User::get(['name' => $name]);
+        $user = User::get(['login' => $login]);
 
-        $isValid = UserValidationService::validateStoreData($name, $email, $password, $repeatedPassword, $user);
+        $isValid = UserValidationService::validateStoreData($login, $email, $password, $repeatedPassword, $user);
 
         if ($isValid) {
-            $user = new User($name, $email, password_hash($password, PASSWORD_DEFAULT));
+            $user = new User($login, $email, password_hash($password, PASSWORD_DEFAULT));
             $user->save();
-            FlashMessageService::info("You can now log in");
-            return new RedirectView('/login', 303);
+
+            FlashMessageService::info("Account has been created succesfully!");
+            // return new RedirectView('/login', 303);
+            // require_once '../views/home/index.php';
+            self::login($login, $password);
         } else {
             require_once '../views/user/create.php';
         }
@@ -57,32 +60,40 @@ class UserController
         }
     }
 
-    public function login()
+    public function login($login = null, $password = null)
     {
         session_start();
 
-        $name = Helper::post('name');
-        $password = Helper::post('password');
+        if ($login === null) {
+            $login = Helper::post('login');
+        }
 
-        $user = User::get(['name' => $name]);
+        if ($password === null) {
+            $password = Helper::post('password');
+        }
 
-        if (!$user or !$user->validPassword($password)) {
+        $user = User::get(['login' => $login]);
+
+        if (!$user or !$user->isPasswordValid($password)) {
             FlashMessageService::error("Wrong credentials");
             require_once '../views/user/login-form.php';
         } else {
             $_SESSION['user'] = $user;
+
             FlashMessageService::info("Welcome! You're now logged in.");
             require_once '../views/home/index.php';
         }
     }
 
-// public function logout()
-//     {
-//         session_start();
-//         // Log the user out and redirect to the home page
-//         session_destroy();
-//         header('Location: /');
+    public function logout()
+    {
+        session_start();
 
-//         exit;
-//     }
+        unset($_SESSION['user']);
+
+        session_destroy();
+        header('Location: /');
+
+        exit;
+    }
 }

@@ -5,11 +5,11 @@
 
 class UserValidationService
 {
-    public static function validateStoreData(string $name, string $email, string $password, string $repeatedPassword, $user): bool
+    public static function validateStoreData(string $login, string $email, string $password, string $repeatedPassword, $user): bool
     {
         $isValid = true;
 
-        if ($name == '') {
+        if ($login == '') {
             $isValid = false;
             FlashMessageService::error("Name can't be empty");
         }
@@ -31,7 +31,7 @@ class UserValidationService
 
         if ($user) {
             $isValid = false;
-            FlashMessageService::error("That name is already taken");
+            FlashMessageService::error("That login is already taken");
         }
 
         return $isValid;
