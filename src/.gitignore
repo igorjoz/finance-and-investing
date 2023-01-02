@@ -1,2 +1,6 @@
+# * packages
 /node_modules
 /vendor
+
+# * environment variables
+.env
