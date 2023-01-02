@@ -106,6 +106,13 @@ require_once '../app/Services/PathService.php';
                 </a>
             </li>
 
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/image/create') ?>">
+                <a href="/image/create"
+                    class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                    Image
+                </a>
+            </li>
+
             <?php if (User::isLoggedIn()): ?>
                 <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/user/logout') ?>">
                     <a href="/user/logout"
@@ -120,6 +127,13 @@ require_once '../app/Services/PathService.php';
                     <a href="/user/login"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Login
+                    </a>
+                </li>
+
+                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/user/create') ?>">
+                    <a href="/user/create"
+                        class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                        Register
                     </a>
                 </li>
 
