@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 class UserValidationService
 {
     public static function validateStoreData(string $login, string $email, string $password, string $repeatedPassword, $user): bool

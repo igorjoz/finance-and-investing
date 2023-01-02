@@ -44,8 +44,9 @@ class UserController
 
             FlashMessageService::info("Account has been created succesfully!");
             // return new RedirectView('/login', 303);
-            // require_once '../views/home/index.php';
             self::login($login, $password);
+            require_once '../views/home/index.php';
+
         } else {
             require_once '../views/user/create.php';
         }

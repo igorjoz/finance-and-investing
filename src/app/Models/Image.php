@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Core/Model.php';
+require_once '../app/Core/Model.php';
 
 class Image extends Model
 {
@@ -9,7 +9,7 @@ class Image extends Model
     public $format;
     public $public;
 
-    public function __construct($author, $title, $public, $format)
+    public function __construct(string $author, string $title, string $public, string $format)
     {
         $this->author = $author;
         $this->title = $title;
@@ -17,26 +17,29 @@ class Image extends Model
         $this->format = $format;
     }
 
-    protected function serialize()
+    protected function serialize(): array
     {
-        $object = [
+        $image = [
             'author' => $this->author,
             'title' => $this->title,
             'public' => $this->public,
             'format' => $this->format
         ];
-        return array_merge(parent::serialize(), $object);
+
+        return array_merge(parent::serialize(), $image);
     }
 
-    static protected function deserialize($object)
+    static protected function deserialize($image): Image
     {
         $instance = new static (
-            $object['author'],
-            $object['title'],
-            $object['public'],
-            $object['format']
+            $image['author'],
+            $image['title'],
+            $image['public'],
+            $image['format']
         );
-        $instance->id = (string) $object['_id'];
+
+        $instance->id = (string) $image['_id'];
+
         return $instance;
     }
 }

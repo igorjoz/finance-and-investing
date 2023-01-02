@@ -8,34 +8,34 @@ class User extends Model
     public $email;
     public $passwordHash;
 
-    public function __construct($login, $email, $passwordHash)
+    public function __construct(string $login, string $email, string $passwordHash)
     {
         $this->login = $login;
         $this->email = $email;
         $this->passwordHash = $passwordHash;
     }
 
-    public function isPasswordValid($password): bool
+    public function isPasswordValid(string $password): bool
     {
         return password_verify($password, $this->passwordHash);
     }
 
     protected function serialize(): array
     {
-        $object = [
+        $user = [
             'login' => $this->login,
             'email' => $this->email,
             'passwordHash' => $this->passwordHash
         ];
 
-        return array_merge(parent::serialize(), $object);
+        return array_merge(parent::serialize(), $user);
     }
 
-    static protected function deserialize($object): User
+    static protected function deserialize($user): User
     {
-        $instance = new static ($object['login'], $object['email'], $object['passwordHash']);
+        $instance = new static ($user['login'], $user['email'], $user['passwordHash']);
 
-        $instance->id = (string) $object['_id'];
+        $instance->id = (string) $user['_id'];
 
         return $instance;
     }

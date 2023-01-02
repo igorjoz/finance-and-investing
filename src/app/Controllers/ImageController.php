@@ -75,77 +75,55 @@
 
 
 
-require_once '../models/Image.php';
+require_once '../app/Models/Image.php';
+require_once '../app/Models/User.php';
+require_once '../app/Services/ImageService.php';
+require_once '../app/Services/ImageValidationService.php';
+require_once '../app/Services/PathService.php';
+require_once '../app/Services/Helper.php';
 require_once '../views/LayoutView.php';
 require_once '../views/RedirectView.php';
 require_once '../views/JsonView.php';
-require_once '../Services/ImageService.php';
 
 class ImageController
 {
-    public function new ()
+    public function create()
     {
-        return new LayoutView('imgnew');
+        require_once '../views/image/create.php';
     }
 
-    public function add()
+    public function store()
     {
         $user = User::getCurrentUser();
-        $valid = true;
 
-        if ($user) {
-            $author = $user->login;
-        } else {
-            $author = Helper::post('author');
-            if ($author == '') {
-                $valid = false;
-                FlashMessageService::error("Author can't be empty");
-            }
-        }
-
+        $author = Helper::post('author');
         $title = Helper::post('title');
-        if ($title == '') {
-            $valid = false;
-            FlashMessageService::error("Title can't be empty");
-        }
-
+        $public = Helper::post('public');
         $watermark = Helper::post('watermark');
-        if ($watermark == '') {
-            $valid = false;
-            FlashMessageService::error("Watermark can't be empty");
-        }
-
         $access = Helper::post('access');
-        if ($access == '') {
-            if ($user) {
-                $valid = false;
-            } else {
-                $public = true;
-            }
-        } else {
-            $public = $access == 'public';
-        }
+
+        $isValid = ImageValidationService::validateStoreData($user, $author, $title, $watermark, $access);
 
         if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
             $filePath = $_FILES['image']['tmp_name'];
             $type = mime_content_type($filePath);
             $format = explode('/', $type)[1];
             if ($format !== 'jpeg' && $format !== 'png') {
-                $valid = false;
+                $isValid = false;
                 FlashMessageService::error("\"{$type}\" is not an acceptable file type");
             }
 
             $fileSize = $_FILES['image']['size'];
             if ($fileSize > 1024 * 1024) {
-                $valid = false;
+                $isValid = false;
                 FlashMessageService::error("The image is too big (max 1 MB)");
             }
         } else {
-            $valid = false;
+            $isValid = false;
             FlashMessageService::error("File can't be empty");
         }
 
-        if ($valid) {
+        if ($isValid) {
             $image = new Image($author, $title, $public, $format);
             $image->save();
             $id = $image->id();
@@ -156,24 +134,26 @@ class ImageController
             }
 
             $thumbnailPath = getcwd() . "/thumb/{$id}.png";
-            generateThumbnail($path, $thumbnailPath, $format);
+            ImageService::generateThumbnail($path, $thumbnailPath, $format);
 
             $watermarkPath = getcwd() . "/preview/{$id}.png";
-            generateWatermark($path, $watermarkPath, $format, $watermark);
+            ImageService::generateWatermark($path, $watermarkPath, $format, $watermark);
 
             FlashMessageService::info('Image added');
         }
 
-        return new RedirectView('/image/new', 303);
+        return new RedirectView('/images', 303);
     }
 
     public function index()
     {
         $user = User::getCurrentUser();
         $images = Image::getAll();
+
         $images = array_filter($images, function ($image) use ($user) {
             return $image->public || ($user && $image->author == $user->login);
         });
+
         return new LayoutView('imglist', ['images' => $images]);
     }
 
