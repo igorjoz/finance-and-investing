@@ -1,35 +1,33 @@
-<form action="/user" method="POST">
-    <label for="login">
-        Login:
-    </label>
-    <input type="text" name="login">
+<div class="form__container">
+    <form action="/user" method="POST" class="form">
+        <div class="form__input_and_label_wrapper">
+            <label for="login">
+                Login:
+            </label>
+            <input type="text" name="login">
+        </div>
 
-    <br>
-    <br>
+        <div class="form__input_and_label_wrapper">
+            <label for="email">
+                Email:
+            </label>
+            <input type="email" name="email">
+        </div>
 
-    <label for="email">
-        Email:
-    </label>
-    <input type="email" name="email">
+        <div class="form__input_and_label_wrapper">
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" name="password">
+        </div>
 
-    <br>
-    <br>
+        <div class="form__input_and_label_wrapper">
+            <label for="repeated_password">
+                Repeat password:
+            </label>
+            <input type="password" name="repeated_password">
+        </div>
 
-    <label for="password">
-        Password:
-    </label>
-    <input type="password" name="password">
-
-    <br>
-    <br>
-
-    <label for="repeated_password">
-        Repeat password:
-    </label>
-    <input type="password" name="repeated_password">
-
-    <br>
-    <br>
-
-    <input type="submit" value="Sign up">
-</form>
+        <input type="submit" value="Register" class="form__submit-button">
+    </form>
+</div>

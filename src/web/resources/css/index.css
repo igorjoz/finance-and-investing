@@ -385,6 +385,9 @@ hr {
     width: 100%;
   }
 }
+.form__container {
+  padding-top: 20px;
+}
 .form__input {
   display: block;
   width: 100%;

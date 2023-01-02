@@ -1,7 +1,10 @@
 <?php
 
 require_once '../app/Services/PathService.php';
+require_once '../app/Services/FlashMessageService.php';
 require_once '../app/Models/User.php';
+
+session_start();
 
 ?>
 
@@ -59,23 +62,15 @@ require_once '../app/Models/User.php';
 </head>
 
 <body class="page__preload">
-    <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "navigation.php"; ?>
+    <?php require_once PathService::layoutComponent("navigation"); ?>
 
-    <?php
-
-    if (User::isLoggedIn()) {
-        echo "<div>SER</div>";
-    } else {
-        echo "<div>NIJE</div>";
-    }
-
-    ?>
+    <?php require_once PathService::layoutComponent("flash-message"); ?>
 
     <?= isset($pageContent) ? $pageContent : "" ?>
 
     <?php isset($file) ? require_once $file : "" ?>
 
-    <?php require_once LAYOUTS_COMPONENTS_PATH_PREFIX . "footer.php"; ?>
+    <?php require_once PathService::layoutComponent("footer"); ?>
 </body>
 
 </html>

@@ -43,4 +43,18 @@
             </button>
         </li>
     </ul>
+
+    <?php if (User::isLoggedIn()): ?>
+        <ul id="footer__time-spent-list" class="footer__list">
+            <li id="footer__time-spent-on-current-page-list-element"
+                class="footer__list-item footer__list-item--total-spent-time">
+                Logged in as: <?= User::getLogin(); ?>
+            </li>
+
+            <li id="footer__time-spent-on-current-page-list-element"
+                class="footer__list-item footer__list-item--total-spent-time">
+                Account email: <?= User::getEmail(); ?>
+            </li>
+        </ul>
+        <?php endif; ?>
 </footer>

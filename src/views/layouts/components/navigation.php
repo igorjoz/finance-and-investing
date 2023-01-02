@@ -18,20 +18,20 @@ require_once '../app/Services/PathService.php';
 
     <div class="navigation__list-wrapper">
         <ul class="navigation__list">
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/') ?>">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/') ?>">
                 <a href="/" class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Home
                 </a>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/images') ?>">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/images') ?>">
                 <a href="/images"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Gallery
                 </a>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/investing') ?>">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/home/investing') ?>">
                 <a href="/home/investing"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Investing
@@ -65,7 +65,7 @@ require_once '../app/Services/PathService.php';
                 </ul>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/faq') ?>">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/home/faq') ?>">
                 <a href="/home/faq"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     FAQ
@@ -99,7 +99,7 @@ require_once '../app/Services/PathService.php';
                 </ul>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/home/contact') ?>">
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/home/contact') ?>">
                 <a href="/home/contact"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Contact
@@ -107,7 +107,7 @@ require_once '../app/Services/PathService.php';
             </li>
 
             <?php if (User::isLoggedIn()): ?>
-                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/user/logout') ?>">
+                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/user/logout') ?>">
                     <a href="/user/logout"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Logout
@@ -116,7 +116,7 @@ require_once '../app/Services/PathService.php';
 
                 <?php else: ?>
 
-                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentPath('/user/login') ?>">
+                <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/user/login') ?>">
                     <a href="/user/login"
                         class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                         Login
@@ -126,8 +126,5 @@ require_once '../app/Services/PathService.php';
                 <?php endif; ?>
 
         </ul>
-
-
-
     </div>
 </nav>
