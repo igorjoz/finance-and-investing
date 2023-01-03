@@ -6,15 +6,15 @@ class Image extends Model
 {
     public $author;
     public $title;
-    public $format;
+    public $extension;
     public $public;
 
-    public function __construct(string $author, string $title, string $public, string $format)
+    public function __construct(string $author, string $title, string $public, string $extension)
     {
         $this->author = $author;
         $this->title = $title;
         $this->public = $public;
-        $this->format = $format;
+        $this->extension = $extension;
     }
 
     protected function serialize(): array
@@ -23,19 +23,19 @@ class Image extends Model
             'author' => $this->author,
             'title' => $this->title,
             'public' => $this->public,
-            'format' => $this->format
+            'extension' => $this->extension
         ];
 
         return array_merge(parent::serialize(), $image);
     }
 
-    static protected function deserialize($image): Image
+    static public function deserialize($image): Image
     {
         $instance = new static (
             $image['author'],
             $image['title'],
             $image['public'],
-            $image['format']
+            $image['extension']
         );
 
         $instance->id = (string) $image['_id'];

@@ -31,7 +31,7 @@ class User extends Model
         return array_merge(parent::serialize(), $user);
     }
 
-    static protected function deserialize($user): User
+    static public function deserialize($user): User
     {
         $instance = new static ($user['login'], $user['email'], $user['passwordHash']);
 

@@ -6,18 +6,6 @@ abstract class Model
 {
     protected $id;
 
-    protected function serialize()
-    {
-        $object = [
-            '_id' => new MongoDB\BSON\ObjectId($this->id)
-            // '_id' => new MongoDB($this->id)
-        ];
-
-        return $object;
-    }
-
-    abstract static protected function deserialize($object);
-
     public function save()
     {
         if (isset($this->id)) {
@@ -63,4 +51,15 @@ abstract class Model
         $collectionName = strtolower(get_called_class()) . 's';
         return Database::get()->$collectionName;
     }
+
+    protected function serialize()
+    {
+        $object = [
+            '_id' => new MongoDB\BSON\ObjectId($this->id)
+        ];
+
+        return $object;
+    }
+
+    abstract static public function deserialize($object);
 }
