@@ -42,7 +42,7 @@ class UserController
             $user = new User($login, $email, password_hash($password, PASSWORD_DEFAULT));
             $user->save();
 
-            FlashMessageService::info("Account has been created succesfully!");
+            FlashMessageService::info("Your account has been created succesfully!");
             // return new RedirectView('/login', 303);
             self::login($login, $password);
             require_once '../views/home/index.php';
@@ -63,8 +63,6 @@ class UserController
 
     public function login($login = null, $password = null)
     {
-        session_start();
-
         if ($login === null) {
             $login = Helper::post('login');
         }
@@ -81,15 +79,13 @@ class UserController
         } else {
             $_SESSION['user'] = $user;
 
-            FlashMessageService::info("Welcome! You're now logged in.");
+            FlashMessageService::info("Welcome <b>" . $user->login . "</b>! You have successfully logged in!");
             return new RedirectView('/', 303);
         }
     }
 
     public function logout()
     {
-        session_start();
-
         unset($_SESSION['user']);
 
         session_destroy();

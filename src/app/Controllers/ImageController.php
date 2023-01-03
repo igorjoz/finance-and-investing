@@ -1,80 +1,5 @@
 <?php
 
-// require_once '../Models/User.php';
-// require_once '../Services/PathService.php';
-// require_once '../Services/Helper.php';
-
-// class ImageController
-// {
-//     public function upload()
-//     {
-//         // Check if the user is logged in
-//         if (!User::isLoggedIn()) {
-//             // Redirect to the login page if the user is not logged in
-//             header('Location: /user/login');
-//             exit;
-//         }
-
-//         // Render the image upload form view
-//         require_once('views/image/upload.php');
-
-//         // Handle form submission
-//         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//             // Validate the form data
-//             // ...
-
-//             // Check if the file was uploaded successfully
-//             if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-//                 // Get the file information
-//                 $tmp_name = $_FILES['image']['tmp_name'];
-//                 $name = $_FILES['image']['name'];
-//                 $size = $_FILES['image']['size'];
-
-//                 // Generate a unique filename
-//                 $filename = uniqid() . '-' . $name;
-
-//                 // Move the uploaded file to the desired location
-//                 move_uploaded_file($tmp_name, __DIR__ . '/public/uploads/' . $filename);
-
-//                 // Save the image information to the database
-//                 // ...
-
-//                 // Redirect to the image gallery page
-//                 header('Location: /image/gallery');
-//                 exit;
-//             }
-//         }
-//     }
-
-//     public function delete($id)
-//     {
-//         // Check if the user is logged in
-//         if (!User::isLoggedIn()) {
-//             // Redirect to the login page if the user is not logged in
-//             header('Location: /user/login');
-//             exit;
-//         }
-
-//         // Check if the image ID is valid
-//         if (!is_numeric($id)) {
-//             // Show an error message if the ID is not valid
-//             $error = 'Invalid image ID';
-//         } else {
-//             // Delete the image from the database
-//             // ...
-
-//             // Redirect to the image gallery page
-//             header('Location: /image/gallery');
-//             exit;
-//         }
-//     }
-// }
-
-
-
-
-
-
 require_once '../app/Models/Image.php';
 require_once '../app/Models/User.php';
 require_once '../app/Services/ImageService.php';
@@ -98,63 +23,110 @@ class ImageController
 
         $author = Helper::post('author');
         $title = Helper::post('title');
-        $public = Helper::post('public');
-        $watermark = Helper::post('watermark');
+        $watermark = Helper::post('watermark_text');
         $access = Helper::post('access');
+
+        // if ($access === 'public') {
+        //     $public = true;
+        // } else {
+        //     $public = false;
+        // }
 
         $isValid = ImageValidationService::validateStoreData($user, $author, $title, $watermark, $access);
 
-        if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
-            $filePath = $_FILES['image']['tmp_name'];
-            $type = mime_content_type($filePath);
-            $format = explode('/', $type)[1];
-            if ($format !== 'jpeg' && $format !== 'png') {
+        $access = Helper::post('access');
+        if ($access === '') {
+            if ($user) {
                 $isValid = false;
-                FlashMessageService::error("\"{$type}\" is not an acceptable file type");
+            } else {
+                $public = true;
+            }
+        } else {
+            $access == 'public';
+            $public = true;
+        }
+
+        if (isset($_FILES['image']) and $_FILES['image']['size'] > 0) {
+            $filePath = $_FILES['image']['tmp_name'];
+            $fileSize = $_FILES['image']['size'];
+            $fileType = mime_content_type($filePath);
+            $fileExtension = explode('/', $fileType)[1];
+
+            if ($fileExtension !== 'jpeg' and $fileExtension !== 'png') {
+                $isValid = false;
+                FlashMessageService::error("\"{$fileType}\" is not an allowed file type");
             }
 
-            $fileSize = $_FILES['image']['size'];
             if ($fileSize > 1024 * 1024) {
                 $isValid = false;
-                FlashMessageService::error("The image is too big (max 1 MB)");
+                FlashMessageService::error("The image exceeds the maximum allowed file size (1 MB)");
             }
         } else {
             $isValid = false;
-            FlashMessageService::error("File can't be empty");
+            FlashMessageService::error("You haveb't selected an image");
         }
 
         if ($isValid) {
-            $image = new Image($author, $title, $public, $format);
+            $image = new Image($author, $title, $public, $fileExtension);
             $image->save();
-            $id = $image->id();
-            $name = "{$id}.{$format}";
-            $path = getcwd() . "/images/{$name}";
+            $id = $image->getId();
+            $name = $id . "." . $fileExtension;
+            $path = getcwd() . "/images/uploads/" . $name;
+
             if (!rename($filePath, $path)) {
-                FlashMessageService::error("Couldn't save file");
+                FlashMessageService::error("Saving the file has failed.");
             }
 
-            $thumbnailPath = getcwd() . "/thumb/{$id}.png";
-            ImageService::generateThumbnail($path, $thumbnailPath, $format);
+            $thumbnailPath = getcwd() . "/images/uploads/thumbnails/{$id}.png";
+            ImageService::createThumbnail($path, $thumbnailPath, $fileExtension);
 
-            $watermarkPath = getcwd() . "/preview/{$id}.png";
-            ImageService::generateWatermark($path, $watermarkPath, $format, $watermark);
+            $watermarkPath = getcwd() . "/images/uploads/preview/{$id}.png";
+            ImageService::createWatermark($path, $watermarkPath, $fileExtension, $watermark);
 
-            FlashMessageService::info('Image added');
+            FlashMessageService::info('Image has been uploaded successfully!');
         }
 
-        return new RedirectView('/images', 303);
+        // return new RedirectView('/images', 303);
+        require_once '../views/image/index.php';
     }
 
     public function index()
     {
         $user = User::getCurrentUser();
-        $images = Image::getAll();
+        // $images = Image::getAll();
 
-        $images = array_filter($images, function ($image) use ($user) {
-            return $image->public || ($user && $image->author == $user->login);
-        });
+        // $images = array_filter($images, function ($image) use ($user) {
+        //     // return $image->public or ($user and $image->author === $user->login);
+        //     return $image->public;
+        // });
 
-        return new LayoutView('imglist', ['images' => $images]);
+        // paginate images
+
+
+
+        // $page = 1;
+        // $pageSize = 3;
+
+        // $opts = [
+        //     'skip' => ($page - 1) * $pageSize,
+        //     'limit' => $pageSize
+        // ];
+
+        // $images = Database::get()->images->find([], $opts)->toArray()[2];
+        // $images = Database::get()->images->find([], $opts)->toArray()[2];
+
+        // var_dump($images);
+
+        // $images = array_values($images);
+
+        // var_dump($images);
+
+        // $images = array_filter($images, function ($image) use ($user) {
+        //     return $image->public || ($user && $image->author == $user->login);
+        // });
+
+        // return new LayoutView('imglist', ['images' => $images]);
+        require_once '../views/image/index.php';
     }
 
     public function search()
@@ -164,17 +136,21 @@ class ImageController
 
     public function get()
     {
+        $user = User::getCurrentUser();
         $title = $_GET['title'];
+
         $images = Image::getAll([
             'title' => new MongoDB\BSON\Regex($title, 'i')
         ]);
-        $user = User::getCurrentUser();
+
         $images = array_values(array_filter($images, function ($image) use ($user) {
-            return $image->public || ($user && $user->login == $image->author);
+            return $image->public or ($user and $user->login == $image->author);
         }));
+
         $ids = array_map(function ($image) {
             return $image->id();
         }, $images);
+
         return new JsonView($ids);
     }
 }
