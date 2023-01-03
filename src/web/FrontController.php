@@ -24,6 +24,3 @@ if ($view instanceof View) {
 
 // delete images collection
 // Database::get()->images->drop();
-
-// delete posts collection
-// Database::get()->posts->drop();

@@ -25,25 +25,20 @@ class ImageController
         $title = Helper::post('title');
         $watermark = Helper::post('watermark_text');
         $access = Helper::post('access');
-
-        // if ($access === 'public') {
-        //     $public = true;
-        // } else {
-        //     $public = false;
-        // }
+        $public = false;
 
         $isValid = ImageValidationService::validateStoreData($user, $author, $title, $watermark, $access);
 
-        $access = Helper::post('access');
         if ($access === '') {
             if ($user) {
                 $isValid = false;
             } else {
                 $public = true;
             }
-        } else {
-            $access == 'public';
+        } else if ($access === 'public') {
             $public = true;
+        } else {
+            $public = false;
         }
 
         if (isset($_FILES['image']) and $_FILES['image']['size'] > 0) {

@@ -1,30 +1,30 @@
 <?php
 
-require_once '../models/Image.php';
+require_once '../app/Models/Image.php';
+require_once '../app/Services/Helper.php';
+require_once '../app/Services/PathService.php';
 require_once '../views/LayoutView.php';
 require_once '../views/RedirectView.php';
 
-class FavoriteController
+class FavoriteImageController
 {
     public function index()
     {
-        $ids = isset($_SESSION['favorites']) ? $_SESSION['favorites'] : [];
-        $imgs = array_map(function ($id) {
-            return Img::get(['_id' => new MongoDB\BSON\ObjectId($id)]);
-        }, $ids);
-        return new LayoutView('favlist', ['imgs' => $imgs]);
+        require_once '../views/favorite-image/index.php';
     }
 
-    public function set()
+    public function save()
     {
-        $selected = post('selected', []);
+        $selected = Helper::post('selected', []);
         $_SESSION['favorites'] = $selected;
-        return new RedirectView('/imgs/favorite', 303);
+
+        return new RedirectView('/favorite-images', 303);
     }
 
     public function remove()
     {
-        $selected = post('selected', []);
+        $selected = Helper::post('selected', []);
+
         if (isset($_SESSION['favorites'])) {
             $_SESSION['favorites'] = array_values(
                 array_filter($_SESSION['favorites'], function ($id) use ($selected) {
@@ -34,6 +34,6 @@ class FavoriteController
         } else {
             $_SESSION['favorites'] = [];
         }
-        return new RedirectView('/imgs/favorite', 303);
+        return new RedirectView('/favorite-images', 303);
     }
 }
