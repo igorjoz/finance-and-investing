@@ -81,7 +81,6 @@ class ImageController
             FlashMessageService::info('Image has been uploaded successfully!');
         }
 
-        // return new RedirectView('/images', 303);
         require_once '../views/image/index.php';
     }
 

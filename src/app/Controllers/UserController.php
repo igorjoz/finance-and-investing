@@ -43,7 +43,6 @@ class UserController
             $user->save();
 
             FlashMessageService::info("Your account has been created succesfully!");
-            // return new RedirectView('/login', 303);
             self::login($login, $password);
             require_once '../views/home/index.php';
 

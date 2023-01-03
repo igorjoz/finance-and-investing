@@ -64,7 +64,7 @@
     </p>
     
     <p>
-        <?= $page ?> page of <?= $total / $limit ?>
+        <?= $page ?> page of <?= ($total / $limit) === 0 ? 1 : ceil($total / $limit) ?>
     </p>
     
 

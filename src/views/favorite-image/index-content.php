@@ -5,34 +5,42 @@
 <div class="gallery__wrapper">
 <form action="/favorite-image/remove-from-favorites" method="POST" class="gallery__form">
 
-<?php  foreach ($images as $image) : ?>
-    <?php
-    $publicOrPrivate = $image->public ? 'public' : 'private';
-    $thumbnailPath = "/images/uploads/thumbnails/{$image->getId()}.png";
-    $isCheckedAsFavorite = in_array($image->getId(), $favorites) ? 'checked' : '';
+<?php if ($images and $images[0] !== NULL) : ?>
 
-    if ($user && $user->getLogin() == $image->author) {
-        $imagePath = "/images/uploads/{$image->getId()}.{$image->extension}";
-    } else {
-        $imagePath = "/images/uploads/preview/{$image->getId()}.png";
-    }
-    ?>
+    <?php  foreach ($images as $image) : ?>
+        <?php
+        $publicOrPrivate = $image->public ? 'public' : 'private';
+        $thumbnailPath = "/images/uploads/thumbnails/{$image->getId()}.png";
+        $isCheckedAsFavorite = in_array($image->getId(), $favorites) ? 'checked' : '';
 
-    <div class="gallery__image-wrapper">
-        <a href="<?= $imagePath ?>">
-            <img src="<?= $thumbnailPath ?>"/>
-        </a>
+        if ($user && $user->getLogin() == $image->author) {
+            $imagePath = "/images/uploads/{$image->getId()}.{$image->extension}";
+        } else {
+            $imagePath = "/images/uploads/preview/{$image->getId()}.png";
+        }
+        ?>
 
-        <div class="gallery__image-text">
-            <p class="gallery__image-title">
-                <?= $image->title . ' [' . $publicOrPrivate . ']' ?>
-            </p>
-            <input type="checkbox" name="selected[]" value="<?= $image->getId() ?>" <?= $isCheckedAsFavorite ?> class="gallery__favorite-image-input">   
+        <div class="gallery__image-wrapper">
+            <a href="<?= $imagePath ?>">
+                <img src="<?= $thumbnailPath ?>"/>
+            </a>
+
+            <div class="gallery__image-text">
+                <p class="gallery__image-title">
+                    <?= $image->title . ' [' . $publicOrPrivate . ']' ?>
+                </p>
+                <input type="checkbox" name="selected[]" value="<?= $image->getId() ?>" <?= $isCheckedAsFavorite ?> class="gallery__favorite-image-input">   
+            </div>
         </div>
-    </div>
-<?php endforeach ; ?>
+    <?php endforeach ; ?>
 
-<?php if (count($images) !== 0) : ?>
+<?php else : ?>
+
+<?php endif ; ?>
+
+
+    
+<?php if ($images and $images[0] !== NULL) : ?>
     <input type="submit" value="Remove selected photos from favorites" class="form__submit-button gallery__submit-button">
 <?php else : ?>
     <p class="gallery__no-images">There are no images in the favorite images gallery yet.</p>
