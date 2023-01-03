@@ -1,13 +1,14 @@
 <?php
 
-echo '<h1>Images gallery</h1>';
+echo '<h1 class="gallery__header">Images gallery</h1>';
 
 echo '<div class="gallery__wrapper">';
-echo '<form action="/images/favorite" method="POST">';
+echo '<form action="/favorite-image/save-to-favorites" method="POST" class="gallery__form">';
 
 foreach ($images as $image) {
-    $isPrivate = $image->public ? 'public' : 'private';
-    $thumbPath = "/images/uploads/thumbnails/{$image->getId()}.png";
+    $publicOrPrivate = $image->public ? 'public' : 'private';
+    $thumbnailPath = "/images/uploads/thumbnails/{$image->getId()}.png";
+    $isCheckedAsFavorite = in_array($image->getId(), $favorites) ? 'checked' : '';
 
     if ($user && $user->getLogin() == $image->author) {
         $imagePath = "/images/uploads/{$image->getId()}.{$image->extension}";
@@ -15,16 +16,22 @@ foreach ($images as $image) {
         $imagePath = "/images/uploads/preview/{$image->getId()}.png";
     }
 
-    echo '<div class="gallery__image">';
-    echo '<a href="' . $imagePath . '"><img src="' . $thumbPath . '"></a>';
-    echo '<p class="caption">' . $image->title . ' [' . $isPrivate . ']</p>';
+    echo '<div class="gallery__image-wrapper">';
+    echo '<a href="' . $imagePath . '"><img src="' . $thumbnailPath . '"/></a>';
 
-    $checked = in_array($image->getId(), $favorites) ? 'checked' : '';
+    echo '<div class="gallery__image-text">';
+    echo '<p class="gallery__image-title">' . $image->title . ' [' . $publicOrPrivate . ']</p>';
+    echo '<input type="checkbox" name="selected[]" value="' . $image->getId() . '"' . $isCheckedAsFavorite . '>';
+    echo '</div>';
 
-    echo '<input type="checkbox" name="selected[]" value="' . $image->getId() . '"' . $checked . '>';
     echo "</div>";
 }
 
-echo '<input type="submit" value="Add selected photos to favorites" class="form__submit-button">';
+if (count($images) !== 0) {
+    echo '<input type="submit" value="Add selected photos to favorites" class="form__submit-button">';
+} else {
+    echo '<p class="gallery__no-images">There are no images in the gallery yet.</p>';
+}
+
 echo "</form>";
 echo '</div>';

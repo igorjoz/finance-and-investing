@@ -106,8 +106,8 @@ require_once '../app/Services/PathService.php';
                 </a>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/favorites-gallery') ?>">
-                <a href="/favorites-gallery"
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/favorite-images') ?>">
+                <a href="/favorite-images"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
                     Favorites
                 </a>

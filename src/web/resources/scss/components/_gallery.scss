@@ -6,4 +6,33 @@
         margin-right: auto;
         width: 1200px;
     }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-size: 3.6rem;
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__image-wrapper {
+        padding: 10px 20px;
+    }
+
+    &__image-title {
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    &__image-text {
+        display: flex;
+        justify-content: space-between;
+    }
 }

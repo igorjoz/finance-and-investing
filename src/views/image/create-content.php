@@ -1,16 +1,16 @@
 <div class="form__container">
     <form action="/image" method="POST" enctype="multipart/form-data" class="form">
-        <div class="form__input_and_label_wrapper">
-            <label for="author">
-                Author nickname:
-            </label>
 
-            <?php if (User::isLoggedIn()): ?>
-                <input value="<?= User::getLogin() ?>" type="text" name="author" disabled>
-                <?php else: ?>
+        <?php if (User::isLoggedIn()): ?>
+            <input value="<?= User::getLogin() ?>" type="text" name="author" hidden>
+            <?php else: ?>
+            <div class="form__input_and_label_wrapper">
+                <label for="author">
+                    Author nickname:
+                </label>
                 <input type="text" name="author">
-                <?php endif; ?>
-        </div>
+            </div>
+            <?php endif; ?>
 
         <div class="form__input_and_label_wrapper">
             <label for="title">
