@@ -9,6 +9,7 @@ $router->get('/home/faq', 'HomeController::faq');
 $router->get('/home/contact', 'HomeController::contact');
 
 // * user
+$router->get('/users', 'UserController::index');
 $router->get('/user/create', 'UserController::create');
 $router->post('/user', 'UserController::store');
 $router->get('/user/login', 'UserController::loginForm');
@@ -19,6 +20,11 @@ $router->get('/user/logout', 'UserController::logout');
 $router->get('/images', 'ImageController::index');
 $router->get('/image/create', 'ImageController::create');
 $router->post('/image', 'ImageController::store');
+
+// * favorite images
+$router->get('/favorite-images', 'FavoriteImageController::index');
+$router->post('/favorite-image/save-to-favorites', 'FavoriteImageController::save');
+$router->post('/favorite-image/remove-from-favorites', 'FavoriteImageController::remove');
 
 // * error handling
 $router->_404('ErrorController::_404');
@@ -34,12 +40,3 @@ $router->get('/user/register', 'UserController::create');
 $router->get('/login', 'UserController::loginForm');
 
 $router->get('/gallery', 'ImageController::index');
-
-
-// * testing
-$router->get('/post/create', 'PostController::create');
-$router->get('/posts', 'PostController::index');
-$router->post('/post/create', 'PostController::store');
-
-// * admin panel
-$router->get('/users', 'UserController::index');
