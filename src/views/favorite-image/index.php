@@ -1,17 +1,27 @@
 <?php
 
 $user = User::getCurrentUser();
-$ids = isset($_SESSION['favorites']) ? $_SESSION['favorites'] : [];
 $favorites = isset($_SESSION['favorites']) ? $_SESSION['favorites'] : [];
-$images = Image::getAll();
+$ids = isset($_SESSION['favorites']) ? $_SESSION['favorites'] : [];
+
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$limit = 3;
+$skip = ($page - 1) * $limit;
+$next = ($page + 1);
+$prev = ($page - 1);
+
+$images = Image::getAllWithPagination([], $page, $limit);
+
+$images = array_filter($images, function ($image) use ($user) {
+    return $image->public or ($user and $image->author === $user->login);
+});
+
 
 $images = array_map(function ($id) {
     return Image::get(['_id' => new MongoDB\BSON\ObjectId($id)]);
 }, $ids);
 
-// $images = array_filter($images, function ($image) use ($user) {
-// return $image->public or ($user and $image->author === $user->login);
-// });
+$total = count($images);
 
 $pageTitle = "Favorite images gallery";
 $file = '../views/favorite-image/index-content.php';

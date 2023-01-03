@@ -41,6 +41,23 @@ abstract class Model
         return $objects;
     }
 
+    static public function getAllWithPagination(array $query = [], $page = 1, $limit = 5)
+    {
+        $opts = [
+            'skip' => ($page - 1) * $limit,
+            'limit' => $limit
+        ];
+
+        $cursor = static::getCollection()->find($query, $opts);
+        $objects = [];
+
+        foreach ($cursor as $object) {
+            array_push($objects, static::deserialize($object));
+        }
+
+        return $objects;
+    }
+
     public function getId()
     {
         return $this->id;

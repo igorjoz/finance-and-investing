@@ -87,40 +87,6 @@ class ImageController
 
     public function index()
     {
-        $user = User::getCurrentUser();
-        // $images = Image::getAll();
-
-        // $images = array_filter($images, function ($image) use ($user) {
-        //     // return $image->public or ($user and $image->author === $user->login);
-        //     return $image->public;
-        // });
-
-        // paginate images
-
-
-
-        // $page = 1;
-        // $pageSize = 3;
-
-        // $opts = [
-        //     'skip' => ($page - 1) * $pageSize,
-        //     'limit' => $pageSize
-        // ];
-
-        // $images = Database::get()->images->find([], $opts)->toArray()[2];
-        // $images = Database::get()->images->find([], $opts)->toArray()[2];
-
-        // var_dump($images);
-
-        // $images = array_values($images);
-
-        // var_dump($images);
-
-        // $images = array_filter($images, function ($image) use ($user) {
-        //     return $image->public || ($user && $image->author == $user->login);
-        // });
-
-        // return new LayoutView('imglist', ['images' => $images]);
         require_once '../views/image/index.php';
     }
 
