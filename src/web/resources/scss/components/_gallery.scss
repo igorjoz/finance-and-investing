@@ -29,10 +29,42 @@
     &__image-title {
         margin-top: 5px;
         margin-bottom: 0;
+        font-size: 2rem;
     }
 
     &__image-text {
         display: flex;
         justify-content: space-between;
+    }
+
+    &__pagination {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+
+    &__pagination-link {
+        width: 100%;
+        text-align: center;
+        padding: 5px 15px;
+        border-radius: 6px;
+        color: $default-font-color;
+        background-color: $secondary-background-color;
+        font-size: 2.6rem;
+        margin: 0 5px;
+
+        &:hover {
+            color: $secondary-color;
+            text-decoration: none;
+        }
+    }
+
+    &__submit-button {
+        font-size: 2.6rem;
+    }
+
+    &__favorite-image-input {
+        scale: 1.5;
     }
 }
