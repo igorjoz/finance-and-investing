@@ -4,3 +4,6 @@
 
 # * environment variables
 .env
+
+# * user images uploads
+/web/images/uploads
