@@ -1,18 +1,12 @@
-<?php
-
-$user = User::getCurrentUser();
-
-?>
-
 <div class="form__container">
     <form action="/image" method="POST" enctype="multipart/form-data" class="form">
         <div class="form__input_and_label_wrapper">
             <label for="author">
-                Author:
+                Author nickname:
             </label>
 
-            <?php if ($user): ?>
-                <input value="<?= $user->login ?>" type="text" name="author" disabled>
+            <?php if (User::isLoggedIn()): ?>
+                <input value="<?= User::getLogin() ?>" type="text" name="author" disabled>
                 <?php else: ?>
                 <input type="text" name="author">
                 <?php endif; ?>
@@ -20,26 +14,26 @@ $user = User::getCurrentUser();
 
         <div class="form__input_and_label_wrapper">
             <label for="title">
-                Title:
+                Photo title:
             </label>
             <br>
             <input type="text" name="title">
         </div>
 
         <div class="form__input_and_label_wrapper">
-            <label for="watermark">
-                Watermark:
+            <label for="watermark_text">
+                Watermark text:
             </label>
-            <input type="text" name="watermark">
+            <input type="text" name="watermark_text">
         </div>
 
         <br>
 
         <div class="form__input_and_label_wrapper">
-            <label for="img">
+            <label for="image">
                 Image:
             </label>
-            <input type="file" name="img">
+            <input type="file" name="image">
         </div>
 
         <br>

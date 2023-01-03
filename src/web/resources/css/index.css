@@ -537,4 +537,10 @@ hr {
 .investing__nested-list-item {
   list-style-type: circle;
   font-size: 1.8rem;
+}
+
+.gallery__wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
 }/*# sourceMappingURL=index.css.map */

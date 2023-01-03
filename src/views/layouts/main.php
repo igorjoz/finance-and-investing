@@ -4,8 +4,6 @@ require_once '../app/Services/PathService.php';
 require_once '../app/Services/FlashMessageService.php';
 require_once '../app/Models/User.php';
 
-session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -62,15 +60,15 @@ session_start();
 </head>
 
 <body class="page__preload">
-    <?php require_once PathService::layoutComponent("navigation"); ?>
+    <?php include_once PathService::layoutComponent("navigation"); ?>
 
-    <?php require_once PathService::layoutComponent("flash-message"); ?>
+    <?php include_once PathService::layoutComponent("flash-message"); ?>
 
     <?= isset($pageContent) ? $pageContent : "" ?>
 
-    <?php isset($file) ? require_once $file : "" ?>
+    <?php isset($file) ? include_once $file : "" ?>
 
-    <?php require_once PathService::layoutComponent("footer"); ?>
+    <?php include_once PathService::layoutComponent("footer"); ?>
 </body>
 
 </html>

@@ -24,13 +24,6 @@ require_once '../app/Services/PathService.php';
                 </a>
             </li>
 
-            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/images') ?>">
-                <a href="/images"
-                    class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
-                    Gallery
-                </a>
-            </li>
-
             <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/home/investing') ?>">
                 <a href="/home/investing"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
@@ -106,10 +99,24 @@ require_once '../app/Services/PathService.php';
                 </a>
             </li>
 
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/gallery') ?>">
+                <a href="/gallery"
+                    class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                    Gallery
+                </a>
+            </li>
+
+            <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/favorites-gallery') ?>">
+                <a href="/favorites-gallery"
+                    class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
+                    Favorites
+                </a>
+            </li>
+
             <li class="navigation__list-item <?= PathService::activeElementIfIsCurrentUri('/image/create') ?>">
                 <a href="/image/create"
                     class="link link--default-font-color link--no-hover-underline navigation__list-item-link">
-                    Image
+                    Upload
                 </a>
             </li>
 

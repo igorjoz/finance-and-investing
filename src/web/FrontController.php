@@ -1,5 +1,9 @@
 <?php
 
+require_once '../app/Models/User.php';
+
+session_start();
+
 require_once '../vendor/autoload.php';
 require_once '../app/Core/Router.php';
 require_once '../app/Core/Database.php';
