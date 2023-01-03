@@ -28,17 +28,6 @@ class ImageValidationService
             FlashMessageService::error("Watermark can't be empty");
         }
 
-        $access = Helper::post('access');
-        if ($access == '') {
-            if ($user) {
-                $isValid = false;
-            } else {
-                $public = true;
-            }
-        } else {
-            $public = $access == 'public';
-        }
-
         return $isValid;
     }
 }

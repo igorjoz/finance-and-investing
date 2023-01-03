@@ -2,24 +2,26 @@
 
 class ImageService
 {
-    static public function generateThumbnail($file, $path, $format)
+    static public function createThumbnail($file, $path, $extension)
     {
-        $create = "imagecreatefrom{$format}";
-        $img = $create($file);
-        $thumb = imagescale($img, 200, 125);
-        imagedestroy($img);
-        imagepng($thumb, $path);
+        $createFunction = "imagecreatefrom" . $extension;
+        $image = $createFunction($file);
+
+        $thumbnail = imagescale($image, 200, 125);
+
+        imagedestroy($image);
+        imagepng($thumbnail, $path);
     }
 
-    static public function generateWatermark($file, $path, $format, $text)
+    static public function createWatermark($file, $path, $extension, $text)
     {
-        $create = "imagecreatefrom{$format}";
-        $img = $create($file);
-        $color = imagecolorallocate($img, 0x0, 0x0, 0x0);
-        $x = 50;
-        $y = imagesy($img) - 50;
-        imagettftext($img, 20, 45, $x, $y, $color, '../VT323-Regular.ttf', $text);
-        imagepng($img, $path);
-        imagedestroy($img);
+        $createFunction = "imagecreatefrom" . $extension;
+        $image = $createFunction($file);
+        $fontColor = imagecolorallocate($image, 0x64, 0x64, 0x64);
+        $fontFilename = '../../VT323-Regular.ttf';
+
+        imagettftext($image, 40, -45, 75, 75, $fontColor, $fontFilename, $text);
+        imagepng($image, $path);
+        imagedestroy($image);
     }
 }

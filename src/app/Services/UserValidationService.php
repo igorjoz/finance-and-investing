@@ -8,27 +8,27 @@ class UserValidationService
 
         if ($login == '') {
             $isValid = false;
-            FlashMessageService::error("Name can't be empty");
+            FlashMessageService::error("The login field is empty");
         }
 
         if ($email == '') {
             $isValid = false;
-            FlashMessageService::error("Email can't be empty");
+            FlashMessageService::error("The email address is empty");
         }
 
         if ($password == '') {
             $isValid = false;
-            FlashMessageService::error("Password can't be empty");
+            FlashMessageService::error("The password is empty");
         }
 
         if ($repeatedPassword != $password) {
             $isValid = false;
-            FlashMessageService::error("Passwords have to be the same");
+            FlashMessageService::error("You mistyped password or repeated password - they have to be exactly the same");
         }
 
         if ($user) {
             $isValid = false;
-            FlashMessageService::error("That login is already taken");
+            FlashMessageService::error("That login is already taken by other user");
         }
 
         return $isValid;
