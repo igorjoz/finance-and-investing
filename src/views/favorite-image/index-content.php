@@ -13,7 +13,7 @@
         $thumbnailPath = "/images/uploads/thumbnails/{$image->getId()}.png";
         $isCheckedAsFavorite = in_array($image->getId(), $favorites) ? 'checked' : '';
 
-        if ($user && $user->getLogin() == $image->author) {
+        if ($user and $user->getLogin() == $image->author) {
             $imagePath = "/images/uploads/{$image->getId()}.{$image->extension}";
         } else {
             $imagePath = "/images/uploads/preview/{$image->getId()}.png";

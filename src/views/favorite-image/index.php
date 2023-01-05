@@ -16,7 +16,6 @@ $images = array_filter($images, function ($image) use ($user) {
     return $image->public or ($user and $image->author === $user->login);
 });
 
-
 $images = array_map(function ($id) {
     return Image::get(['_id' => new MongoDB\BSON\ObjectId($id)]);
 }, $ids);
