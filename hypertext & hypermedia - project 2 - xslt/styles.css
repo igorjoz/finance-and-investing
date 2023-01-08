@@ -1,7 +1,23 @@
-/* h1 {
-    text-align: center;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-name {
-    color: red;
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 70%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+img {
+    max-width: 500px;
 }

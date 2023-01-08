@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="styles.css"?>
-<?xml-stylesheet type="text/xsl" href="finance-and-investing.xsl"?>
-<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="finance-and-investing.xsd">
+<?xml-stylesheet type="text/xsl" href="fai.xsl"?>
+<!-- <?xml-stylesheet type="text/xsl" href="fai-xml.xsl"?> -->
+<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <images>
         <listOfAllowedExtensions>jpg png webp avif</listOfAllowedExtensions>
         <image>
@@ -160,63 +160,33 @@
     <inflationTable>
         <record>
             <year>1</year>
-            <price>$100,00</price>
-            <inflationRate>17,90%</inflationRate>
+            <price>100.00</price>
+            <inflationRate>17.90</inflationRate>
             <cumulativeInflation>0,00%</cumulativeInflation>
         </record>
         <record>
             <year>2</year>
-            <price>$117,90</price>
-            <inflationRate>17,90%</inflationRate>
+            <price>117.90</price>
+            <inflationRate>17.90</inflationRate>
             <cumulativeInflation>17,90%</cumulativeInflation>
         </record>
         <record>
             <year>3</year>
-            <price>$139,00</price>
-            <inflationRate>17,90%</inflationRate>
+            <price>139.00</price>
+            <inflationRate>17.90</inflationRate>
             <cumulativeInflation>39,00%</cumulativeInflation>
         </record>
         <record>
             <year>4</year>
-            <price>$163,89</price>
-            <inflationRate>17,90%</inflationRate>
+            <price>163.89</price>
+            <inflationRate>17.90</inflationRate>
             <cumulativeInflation>63,89%</cumulativeInflation>
         </record>
         <record>
             <year>5</year>
-            <price>$193,22</price>
-            <inflationRate>17,90%</inflationRate>
+            <price>193.22</price>
+            <inflationRate>17.90</inflationRate>
             <cumulativeInflation>93,22%</cumulativeInflation>
-        </record>
-        <record>
-            <year>6</year>
-            <price>$227,81</price>
-            <inflationRate>17,90%</inflationRate>
-            <cumulativeInflation>127,81%</cumulativeInflation>
-        </record>
-        <record>
-            <year>7</year>
-            <price>$268,59</price>
-            <inflationRate>17,90%</inflationRate>
-            <cumulativeInflation>168,59%</cumulativeInflation>
-        </record>
-        <record>
-            <year>8</year>
-            <price>$316,66</price>
-            <inflationRate>17,90%</inflationRate>
-            <cumulativeInflation>216,66%</cumulativeInflation>
-        </record>
-        <record>
-            <year>9</year>
-            <price>$373,35</price>
-            <inflationRate>17,90%</inflationRate>
-            <cumulativeInflation>273,35%</cumulativeInflation>
-        </record>
-        <record>
-            <year>10</year>
-            <price>$440,17</price>
-            <inflationRate>17,90%</inflationRate>
-            <cumulativeInflation>340,17%</cumulativeInflation>
         </record>
     </inflationTable>
 
