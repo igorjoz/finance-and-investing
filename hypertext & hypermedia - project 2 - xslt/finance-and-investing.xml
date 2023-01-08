@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="finance-and-investing.xsl"?>
+<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="finance-and-investing.xsd">
+    <images>
+        <listOfAllowedExtensions>jpg png webp avif</listOfAllowedExtensions>
+        <image>
+            <name>Investing</name>
+            <url>./resources/images/slider/1.webp</url>
+        </image>
+        <image>
+            <name>FAQ (Frequently Asked Questions)</name>
+            <url>./resources/images/slider/2.png</url>
+        </image>
+        <image>
+            <name>ETF (Exchange-traded funds)</name>
+            <url>./resources/images/slider/3.jpg</url>
+        </image>
+        <image>
+            <name>Inflation</name>
+            <url>./resources/images/slider/4.avif</url>
+        </image>
+        <image>
+            <name>Gold</name>
+            <url>./resources/images/slider/5.jpg</url>
+        </image>
+    </images>
+
+    <recommendations>
+        <websites>
+            <website language="Polish" author="Michał Szafrański" isActive="false">
+                <name>Jak oszczędzać pieniądze?</name>
+                <link>https://jakoszczedzacpieniadze.pl/</link>
+            </website>
+            <website language="Polish" author="Marcin Iwuć" isActive="true">
+                <name>Finanse Bardzo Osobiste</name>
+                <link>https://marciniwuc.com/</link>
+            </website>
+        </websites>
+
+        <books>
+            <book language="Polish" author="Michał Szafrański" isAvailable="true" releaseYear="2016"
+                isEbookAvailable="true">
+                <name>Finansowy Ninja</name>
+                <link>https://finansowyninja.pl/</link>
+            </book>
+            <book language="Polish" author="Marcin Iwuć" isAvailable="true" releaseYear="2020"
+                isEbookAvailable="false">
+                <name>Finansowa Forteca</name>
+                <link>https://finansowaforteca.pl/</link>
+            </book>
+        </books>
+
+        <podcasts>
+            <podcast language="Polish" author="Michał Szafrański" isActive="false"
+                discontinuedDate="2022-07-05">
+                <name>Więcej niż oszczędzanie pieniędzy</name>
+                <link>https://jakoszczedzacpieniadze.pl/podcast</link>
+                <alternativeLink>https://open.spotify.com/show/3i8MzCn9AuMbqsWRyr4dnr</alternativeLink>
+            </podcast>
+            <podcast language="Polish" author="Marcin Iwuć" isActive="true">
+                <name>Finanse Bardzo osobiste</name>
+                <link>https://marciniwuc.com/category/podcast/</link>
+                <alternativeLink>https://open.spotify.com/show/3SMKr1XJ9jeXz2TUX0RlJQ</alternativeLink>
+            </podcast>
+        </podcasts>
+    </recommendations>
+
+    <typesOfAssets>
+        <type>
+            <name>shares</name>
+            <subtypes>
+                <subtype>ETFs (exchange-traded funds)</subtype>
+                <subtype>shares of individual companies</subtype>
+                <subtype>commodity futures contracts</subtype>
+            </subtypes>
+        </type>
+        <type>
+            <name>bonds</name>
+            <subtypes>
+                <subtype>treasury bonds: inflation-indexed or with fixed rate</subtype>
+                <subtype>corporate bonds</subtype>
+            </subtypes>
+        </type>
+        <type>
+            <name>real estate</name>
+            <subtypes>
+                <subtype>apartments for rent</subtype>
+                <subtype>flipping houses</subtype>
+                <subtype>investment ground</subtype>
+            </subtypes>
+        </type>
+        <type>
+            <name>raw materials</name>
+            <subtypes>
+                <subtype>gold, silver</subtype>
+                <subtype>crude oil, natural gas</subtype>
+            </subtypes>
+        </type>
+    </typesOfAssets>
+
+    <investingRules>
+        <rule>the economy and markets are cyclical</rule>
+        <rule>don't put all your eggs into one basket - every few or a dozen or so years there is a time that is catastrophic for one of the asset classes, so diversify your portfolio</rule>
+        <rule>buy low, sell high</rule>
+        <rule>be greedy when others are fearful, be fearful when others are greedy; buy when blood is spilling</rule>
+        <rule>it is not profitable to hold large sums of cash in the long term, most assets bring higher rates of return</rule>
+        <rule>controlling emotions and mental state is often more important than knowledge</rule>
+        <rule>no one knows the future, don't trust back analysis</rule>
+        <rule>everyone has a different tendency to take risks</rule>
+    </investingRules>
+
+    <questions>
+        <question>
+            <title>What's the best time to start investing?</title>
+            <answer>
+                <answerWithNote>
+                    <note>Important note: first you need to get rid of your debt. If you have any debt, pay it off first, then build up your emergency fund, and then start investing.</note>
+                    <content>The best time to start investing is now. The sooner you start, the more time you have to take advantage of the power of compounding. The longer you invest, the more time your money has to grow.</content>
+                </answerWithNote>
+            </answer>
+        </question>
+        <question>
+            <title>What should I invest $10'000 in?</title>
+            <answer>
+                <answerWithNote>
+                    <content>Well, it depends. First, you should create a strategy, think about your goals, and then invest according to your strategy. Start with emergency fund, then build your financial cushion, then invest in your long-term portfolio. If you want take more risk - consider creating offensive portfolio.</content>
+                    <note>Important note: first you need to get rid of your debt. If you have any debt, pay it off first, then build up your emergency fund, and then start investing.</note>
+                </answerWithNote>
+            </answer>
+        </question>
+        <question>
+            <title>What is inflation and how does it work?</title>
+            <answer>
+                <content>Inflation is the rate at which the general level of prices for goods and services is rising and, subsequently, the purchasing power of currency is falling. Inflation is a hidden tax that erodes your purchasing power. It is important to understand that inflation is not a one-time event. It is a continuous process that occurs over time.
+                Polish central bank (Narodowy Bank Polski) has set the inflation target at 2.5%, which in long run (20 years) seems to be maintained.</content>
+            </answer>
+        </question>
+    </questions>
+
+    <inflationTable>
+        <record>
+            <year>1</year>
+            <price>$100,00</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>0,00%</cumulativeInflation>
+        </record>
+        <record>
+            <year>2</year>
+            <price>$117,90</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>17,90%</cumulativeInflation>
+        </record>
+        <record>
+            <year>3</year>
+            <price>$139,00</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>39,00%</cumulativeInflation>
+        </record>
+        <record>
+            <year>4</year>
+            <price>$163,89</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>63,89%</cumulativeInflation>
+        </record>
+        <record>
+            <year>5</year>
+            <price>$193,22</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>93,22%</cumulativeInflation>
+        </record>
+        <record>
+            <year>6</year>
+            <price>$227,81</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>127,81%</cumulativeInflation>
+        </record>
+        <record>
+            <year>7</year>
+            <price>$268,59</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>168,59%</cumulativeInflation>
+        </record>
+        <record>
+            <year>8</year>
+            <price>$316,66</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>216,66%</cumulativeInflation>
+        </record>
+        <record>
+            <year>9</year>
+            <price>$373,35</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>273,35%</cumulativeInflation>
+        </record>
+        <record>
+            <year>10</year>
+            <price>$440,17</price>
+            <inflationRate>17,90%</inflationRate>
+            <cumulativeInflation>340,17%</cumulativeInflation>
+        </record>
+    </inflationTable>
+
+    <author>
+        <firstName>Igor</firstName>
+        <lastName>Józefowicz</lastName>
+        <email>igorjozefowicz@gmail.com</email>
+        <phoneNumber>123-456-789</phoneNumber>
+        <github>
+            <name>@igorjoz</name>
+            <link>https://github.com/igorjoz</link>
+        </github>
+        <linkedIn>
+            <name>igor-jozefowicz</name>
+            <link>https://www.linkedin.com/in/igor-jozefowicz/</link>
+        </linkedIn>
+    </author>
+</data>

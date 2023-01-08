@@ -1,0 +1,54 @@
+<!ENTITY % medium "name, link">
+<!ELEMENT data (images,recommendations,typesOfAssets,investingRules,questions,inflationTable,author)>
+<!ELEMENT images (listOfAllowedExtensions,image+)>
+<!ELEMENT listOfAllowedExtensions (#PCDATA)>
+<!ELEMENT image (name,url)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT recommendations (websites,books,podcasts)>
+<!ELEMENT websites (website+)>
+<!ELEMENT website (name,link)>
+<!ATTLIST website language NMTOKEN "Polish">
+<!ATTLIST website author CDATA #REQUIRED>
+<!ATTLIST website isActive NMTOKEN ("yes"|"no")>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT books (book+)>
+<!ELEMENT book (%medium;)>
+<!ATTLIST book language NMTOKEN #REQUIRED>
+<!ATTLIST book author CDATA #REQUIRED>
+<!ATTLIST book isAvailable NMTOKEN #REQUIRED>
+<!ATTLIST book releaseYear NMTOKEN #REQUIRED>
+<!ATTLIST book isEbookAvailable NMTOKEN #REQUIRED>
+<!ELEMENT podcasts (podcast+)>
+<!ELEMENT podcast (name,link,alternativeLink)>
+<!ATTLIST podcast language NMTOKEN #REQUIRED>
+<!ATTLIST podcast author CDATA #REQUIRED>
+<!ATTLIST podcast isActive NMTOKEN #REQUIRED>
+<!ATTLIST podcast discontinuedDate NMTOKEN #IMPLIED>
+<!ELEMENT alternativeLink (#PCDATA)>
+<!ELEMENT typesOfAssets (type+)>
+<!ELEMENT type (name,subtypes)>
+<!ELEMENT subtypes (subtype+)>
+<!ELEMENT subtype (#PCDATA)>
+<!ELEMENT investingRules (rule+)>
+<!ELEMENT rule (#PCDATA)>
+<!ELEMENT questions (question+)>
+<!ELEMENT question (title,answer)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT answer (answerWithNote?,content?)>
+<!ELEMENT answerWithNote (note|content)*>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+<!ELEMENT inflationTable (record+)>
+<!ELEMENT record (year,price,inflationRate,cumulativeInflation)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT inflationRate (#PCDATA)>
+<!ELEMENT cumulativeInflation (#PCDATA)>
+<!ELEMENT author (firstName,lastName,email,phoneNumber,github,linkedIn)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT phoneNumber (#PCDATA)>
+<!ELEMENT github (%medium;)>
+<!ELEMENT linkedIn (%medium;)>
