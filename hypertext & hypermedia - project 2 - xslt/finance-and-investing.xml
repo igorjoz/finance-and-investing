@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="styles.css"?>
 <?xml-stylesheet type="text/xsl" href="finance-and-investing.xsl"?>
 <data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="finance-and-investing.xsd">
@@ -101,10 +102,13 @@
 
     <investingRules>
         <rule>the economy and markets are cyclical</rule>
-        <rule>don't put all your eggs into one basket - every few or a dozen or so years there is a time that is catastrophic for one of the asset classes, so diversify your portfolio</rule>
+        <rule>don't put all your eggs into one basket - every few or a dozen or so years there is a
+            time that is catastrophic for one of the asset classes, so diversify your portfolio</rule>
         <rule>buy low, sell high</rule>
-        <rule>be greedy when others are fearful, be fearful when others are greedy; buy when blood is spilling</rule>
-        <rule>it is not profitable to hold large sums of cash in the long term, most assets bring higher rates of return</rule>
+        <rule>be greedy when others are fearful, be fearful when others are greedy; buy when blood
+            is spilling</rule>
+        <rule>it is not profitable to hold large sums of cash in the long term, most assets bring
+            higher rates of return</rule>
         <rule>controlling emotions and mental state is often more important than knowledge</rule>
         <rule>no one knows the future, don't trust back analysis</rule>
         <rule>everyone has a different tendency to take risks</rule>
@@ -115,8 +119,12 @@
             <title>What's the best time to start investing?</title>
             <answer>
                 <answerWithNote>
-                    <note>Important note: first you need to get rid of your debt. If you have any debt, pay it off first, then build up your emergency fund, and then start investing.</note>
-                    <content>The best time to start investing is now. The sooner you start, the more time you have to take advantage of the power of compounding. The longer you invest, the more time your money has to grow.</content>
+                    <note>Important note: first you need to get rid of your debt. If you have any
+                        debt, pay it off first, then build up your emergency fund, and then start
+                        investing.</note>
+                    <content>The best time to start investing is now. The sooner you start, the more
+                        time you have to take advantage of the power of compounding. The longer you
+                        invest, the more time your money has to grow.</content>
                 </answerWithNote>
             </answer>
         </question>
@@ -124,16 +132,27 @@
             <title>What should I invest $10'000 in?</title>
             <answer>
                 <answerWithNote>
-                    <content>Well, it depends. First, you should create a strategy, think about your goals, and then invest according to your strategy. Start with emergency fund, then build your financial cushion, then invest in your long-term portfolio. If you want take more risk - consider creating offensive portfolio.</content>
-                    <note>Important note: first you need to get rid of your debt. If you have any debt, pay it off first, then build up your emergency fund, and then start investing.</note>
+                    <content>Well, it depends. First, you should create a strategy, think about your
+                        goals, and then invest according to your strategy. Start with emergency
+                        fund, then build your financial cushion, then invest in your long-term
+                        portfolio. If you want take more risk - consider creating offensive
+                        portfolio.</content>
+                    <note>Important note: first you need to get rid of your debt. If you have any
+                        debt, pay it off first, then build up your emergency fund, and then start
+                        investing.</note>
                 </answerWithNote>
             </answer>
         </question>
         <question>
             <title>What is inflation and how does it work?</title>
             <answer>
-                <content>Inflation is the rate at which the general level of prices for goods and services is rising and, subsequently, the purchasing power of currency is falling. Inflation is a hidden tax that erodes your purchasing power. It is important to understand that inflation is not a one-time event. It is a continuous process that occurs over time.
-                Polish central bank (Narodowy Bank Polski) has set the inflation target at 2.5%, which in long run (20 years) seems to be maintained.</content>
+                <content>Inflation is the rate at which the general level of prices for goods and
+                    services is rising and, subsequently, the purchasing power of currency is
+                    falling. Inflation is a hidden tax that erodes your purchasing power. It is
+                    important to understand that inflation is not a one-time event. It is a
+                    continuous process that occurs over time.
+                    Polish central bank (Narodowy Bank Polski) has set the inflation target at 2.5%,
+                    which in long run (20 years) seems to be maintained.</content>
             </answer>
         </question>
     </questions>
